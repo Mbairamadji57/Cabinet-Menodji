@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cabinet MENODJI - Chirurgie dentaire & Esthétique</title>
+    <title>Cabinet BUCCO-Dentaire MENODJI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@
         /* ===== TOP BAR ===== */
         .top-bar {
             background: var(--primary);
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85);
             font-size: 0.85rem;
             padding: 8px 0;
             position: fixed;
@@ -72,6 +72,17 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 8px 20px;
+        }
+        .top-bar .hours {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .top-bar .hours span {
+            background: rgba(255,255,255,0.1);
+            padding: 2px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
         }
         .top-bar .emergency {
             color: #facc15;
@@ -90,14 +101,8 @@
             animation: pulse-badge 1.5s infinite;
         }
         @keyframes pulse-badge {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-                background: #b91c1c;
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); background: #b91c1c; }
         }
 
         /* ===== NAVIGATION ===== */
@@ -124,22 +129,41 @@
             align-items: center;
             justify-content: space-between;
         }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            letter-spacing: -1px;
+
+        /* --- LOGO AVEC IMAGE --- */
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             color: var(--primary);
         }
-        .logo span {
+        .logo-img {
+            height: 80px;
+            width: auto;
+            max-height: 60px;
+            object-fit: contain;
+        }
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        .logo-text span {
             color: var(--accent);
         }
-        .logo small {
+        .logo-text small {
+            display: block;
             font-size: 0.6rem;
             font-weight: 400;
             color: var(--gray-600);
             letter-spacing: 0;
-            display: block;
-            margin-top: -6px;
+            margin-top: -4px;
+        }
+        @media (max-width: 576px) {
+            .logo-img { height: 38px; }
+            .logo-text { font-size: 1.1rem; }
+            .logo-text small { font-size: 0.5rem; }
         }
 
         .nav-links {
@@ -187,11 +211,30 @@
             transition: var(--transition);
         }
 
+        /* ===== BUTTONS ===== */
+        .btn-cta {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 60px;
+            font-weight: 700;
+            color: white;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
         /* ===== HERO ===== */
         .hero {
             background: linear-gradient(135deg, #e6f0f5 0%, #d4e9ed 100%);
-            padding: 60px 0 40px;
-            margin-top: -34px;
+            padding: 60px 0 20px 0;
+            margin-top: 4px;
             position: relative;
             overflow: hidden;
         }
@@ -255,53 +298,41 @@
             align-items: center;
             gap: 6px;
         }
+
+        /* ===== HERO IMAGE ===== */
         .hero-image {
-            background: linear-gradient(145deg, var(--primary), var(--primary-light));
             border-radius: var(--radius);
-            height: 340px;
+            height: 450px;
+            width: 100%;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.2rem;
             box-shadow: var(--shadow-lg);
-            position: relative;
             overflow: hidden;
+            background: #f0f7fa;
+            position: relative;
         }
-        .hero-image .big-icon {
-            font-size: 6rem;
-            margin-bottom: 10px;
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius);
+            object-position: center 40%;
         }
-        .hero-image .floating-card {
-            position: absolute;
-            background: white;
-            color: var(--gray-800);
-            padding: 12px 20px;
-            border-radius: 16px;
-            box-shadow: var(--shadow-lg);
-            font-weight: 600;
-            font-size: 0.9rem;
-            animation: float 3s ease-in-out infinite;
+
+        @media (max-width: 992px) {
+            .hero-image { height: 380px; }
+            .hero-image img { object-position: center 35%; }
         }
-        .hero-image .floating-card:nth-child(2) {
-            top: 20px;
-            right: 20px;
-            animation-delay: 0.5s;
+
+        @media (max-width: 768px) {
+            .hero-image { height: 300px; }
+            .hero-image img { object-position: center 30%; }
         }
-        .hero-image .floating-card:nth-child(3) {
-            bottom: 20px;
-            left: 20px;
-            animation-delay: 1s;
-        }
-        @keyframes float {
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+
+        @media (max-width: 480px) {
+            .hero-image { height: 240px; }
+            .hero-image img { object-position: center 25%; }
         }
 
         /* ===== STATS ===== */
@@ -331,7 +362,7 @@
             font-size: 0.95rem;
         }
 
-        /* ===== SERVICES (6 items) ===== */
+        /* ===== SERVICES ===== */
         .services {
             padding: 80px 0;
         }
@@ -398,7 +429,7 @@
             font-size: 0.95rem;
         }
 
-        /* ===== ABOUT (double section) ===== */
+        /* ===== ABOUT ===== */
         .about {
             background: white;
             padding: 80px 0;
@@ -431,16 +462,20 @@
             font-size: 1.2rem;
         }
         .about-image {
-            background: var(--accent-light);
             border-radius: var(--radius);
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: var(--accent);
+            height: 350px;
+            overflow: hidden;
             box-shadow: var(--shadow-lg);
-            border: 2px dashed var(--accent);
+            border: 2px solid var(--accent-light);
+        }
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .about-image img:hover {
+            transform: scale(1.02);
         }
 
         /* ===== TEAM ===== */
@@ -485,13 +520,8 @@
             font-weight: 600;
             font-size: 0.9rem;
         }
-        .team-card p {
-            color: var(--gray-600);
-            font-size: 0.9rem;
-            margin-top: 8px;
-        }
 
-        /* ===== TESTIMONIALS (3 cards) ===== */
+        /* ===== TESTIMONIALS ===== */
         .testimonials {
             padding: 80px 0;
         }
@@ -575,7 +605,7 @@
             font-size: 0.9rem;
         }
 
-        /* ===== FAQ (Accordéon) ===== */
+        /* ===== FAQ ===== */
         .faq {
             padding: 80px 0;
             background: var(--gray-100);
@@ -731,33 +761,18 @@
         footer a:hover {
             color: white;
         }
-        footer .newsletter input {
-            padding: 12px 16px;
-            border-radius: 60px;
-            border: none;
-            width: 100%;
-            font-family: inherit;
-        }
-        footer .newsletter button {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 60px;
-            font-weight: 700;
-            margin-top: 10px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        footer .newsletter button:hover {
-            background: white;
-            color: var(--primary);
-        }
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 20px;
             text-align: center;
             font-size: 0.9rem;
+        }
+        .footer-hours {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        .footer-hours strong {
+            color: white;
         }
 
         /* ===== FLOATING BUTTONS ===== */
@@ -824,18 +839,10 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 992px) {
-            .hero .grid,
-            .about-grid,
-            .contact-grid {
+            .hero .grid, .about-grid, .contact-grid {
                 grid-template-columns: 1fr;
             }
-            .hero-image {
-                height: 220px;
-            }
-            .services-grid,
-            .team-grid,
-            .testi-grid,
-            .blog-grid {
+            .services-grid, .team-grid, .testi-grid, .blog-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             footer .grid {
@@ -844,20 +851,10 @@
         }
 
         @media (max-width: 768px) {
-            body {
-                padding-top: 60px;
-            }
-            .top-bar {
-                font-size: 0.75rem;
-                padding: 4px 0;
-            }
-            .navbar {
-                top: 28px;
-                padding: 10px 0;
-            }
-            .navbar.scrolled {
-                top: 0;
-            }
+            body { padding-top: 60px; }
+            .top-bar { font-size: 0.75rem; padding: 4px 0; }
+            .navbar { top: 28px; padding: 10px 0; }
+            .navbar.scrolled { top: 0; }
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -871,28 +868,17 @@
                 gap: 16px;
                 border-top: 1px solid var(--gray-200);
             }
-            .nav-links.open {
-                display: flex;
-            }
-            .hamburger {
-                display: flex;
-            }
-            .hero-content h1 {
-                font-size: 2.4rem;
-            }
+            .nav-links.open { display: flex; }
+            .hamburger { display: flex; }
+            .hero-content h1 { font-size: 2.4rem; }
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
             }
-            .services-grid,
-            .team-grid,
-            .testi-grid,
-            .blog-grid {
+            .services-grid, .team-grid, .testi-grid, .blog-grid {
                 grid-template-columns: 1fr;
             }
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
+            .contact-grid { grid-template-columns: 1fr; }
             footer .grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -913,6 +899,15 @@
                 height: 40px;
                 font-size: 1.2rem;
             }
+            .about-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-image {
+                height: 200px;
+            }
         }
     </style>
 </head>
@@ -921,22 +916,28 @@
     <!-- ===== TOP BAR ===== -->
     <div class="top-bar">
         <div class="container">
-            <div>🕒 Lun–Ven : 9h–19h | Sam : 9h–13h</div>
-            <div class="emergency">🚨 Urgence dentaire <span>24/7</span> : 01 23 45 67 89</div>
+            <span class="hours">🕐 <span>Lun-Ven 8h00-13h00 / 15h30-18h00 | Sam 8h00-13h00</span></span>
+            <span class="emergency">📞 Urgence 24/7 : 66-47-88-90/69-21-96-98 <span>APPEL</span></span>
         </div>
     </div>
 
     <!-- ===== NAV ===== -->
     <nav class="navbar" id="navbar">
         <div class="container">
-            <a href="#" class="logo">MENODJI <span>Dental</span><small>Chirurgie & Esthétique</small></a>
+            <a href="#" class="logo-link">
+                <img src="logo1.png" alt="Logo Cabinet MENODJI" class="logo-img">
+                <span class="logo-text">
+                    Cabinet Bucco-Dentaire MENODJI
+                    <small>Chirurgie &amp; Esthétique</small>
+                </span>
+            </a>
             <div class="nav-links" id="navLinks">
                 <a href="#services">Soins</a>
                 <a href="#about">Cabinet</a>
                 <a href="#team">Équipe</a>
                 <a href="#blog">Blog</a>
                 <a href="#contact">Contact</a>
-                <a href="auth.php" class="btn-rdv">Espace Patient</a>
+                <a href="#contact" class="btn-rdv">Prendre RDV</a>
             </div>
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span><span></span><span></span>
@@ -950,19 +951,19 @@
             <div class="grid">
                 <div class="hero-content">
                     <h1>Votre sourire, <span>notre excellence</span></h1>
-                    <p>Des soins de pointe dans une ambiance familiale. Le Dr MENODJI et son équipe vous accueillent avec empathie et rigueur.</p>
+                    <p>Des soins de pointe dans une ambiance familiale. Le Dr MASSEDE ISIDOIRE et son équipe vous accueillent avec empathie et rigueur.</p>
+                    <div>
+                        <a href="#services" class="btn-cta" style="background:#16a34a;">Voir nos services</a>
+                    </div>
                     <div class="hero-badges">
                         <span class="badge">🔬 Imagerie 3D</span>
                         <span class="badge">🦷 Implants haut de gamme</span>
                         <span class="badge">😌 Soins sans douleur</span>
                     </div>
-                    <a href="auth.php" class="btn-rdv" style="display:inline-block;background:var(--primary);color:white;padding:14px 40px;border-radius:60px;font-weight:700;font-size:1.1rem;">Prendre rendez-vous</a>
+                    <a href="#contact" class="btn-rdv" style="display:inline-block;background:var(--primary);color:white;padding:14px 40px;border-radius:60px;font-weight:700;font-size:1.1rem;margin-top:10px;">Prendre rendez-vous</a>
                 </div>
                 <div class="hero-image">
-                    <span class="big-icon">🦷</span>
-                    <span>Cabinet High-Tech</span>
-                    <span class="floating-card">⭐ 4.9 / 5 (120 avis)</span>
-                    <span class="floating-card">🏆 Élu meilleur cabinet 2025</span>
+                    <img src="logo3.jpeg" alt="Cabinet Bucco-Dentaire MENODJI">
                 </div>
             </div>
         </div>
@@ -972,15 +973,15 @@
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
-                <div class="stat"><h3>15<span>+</span></h3><p>Années d'expertise</p></div>
-                <div class="stat"><h3>5 200<span>+</span></h3><p>Patients accompagnés</p></div>
+                <div class="stat"><h3>1<span>+</span></h3><p>Année d'expertise</p></div>
+                <div class="stat"><h3>200<span>+</span></h3><p>Patients accompagnés</p></div>
                 <div class="stat"><h3>98<span>%</span></h3><p>Satisfaction client</p></div>
-                <div class="stat"><h3>4</h3><p>Chirurgiens dédiés</p></div>
+                <div class="stat"><h3>02</h3><p>Chirurgiens dédiés</p></div>
             </div>
         </div>
     </section>
 
-    <!-- ===== SERVICES (6) ===== -->
+    <!-- ===== SERVICES ===== -->
     <section class="services" id="services">
         <div class="container">
             <h2 class="section-title">Nos soins sur mesure</h2>
@@ -1002,7 +1003,7 @@
             <div class="about-grid">
                 <div class="about-text">
                     <h2>Un cabinet d'exception</h2>
-                    <p>Fondé par le Dr. Marc MENODJI, notre cabinet allie une technologie de pointe à une approche profondément humaine. Chaque traitement est personnalisé.</p>
+                    <p>Fondé par le Dr. MASSEDE ISIDOIRE, notre cabinet allie une technologie de pointe à une approche profondément humaine. Chaque traitement est personnalisé.</p>
                     <ul>
                         <li>🧬 Diagnostique numérique (radio 3D, scanner intra-oral)</li>
                         <li>🖨️ Impression 3D pour prothèses et guides chirurgicaux</li>
@@ -1012,7 +1013,7 @@
                     <p style="margin-top:10px;font-weight:600;color:var(--accent);">👉 Nous prenons en charge votre devis mutuelle.</p>
                 </div>
                 <div class="about-image">
-                    🏥 Technologies de pointe
+                    <img src="cabinet-interieur.jpg" alt="Notre cabinet moderne et accueillant">
                 </div>
             </div>
         </div>
@@ -1024,9 +1025,21 @@
             <h2 class="section-title">Notre équipe</h2>
             <p class="section-sub">Des experts passionnés à votre écoute.</p>
             <div class="team-grid">
-                <div class="team-card"><div class="avatar">👨‍⚕️</div><h3>Dr. Marc MENODJI</h3><div class="specialty">Chirurgien-dentiste, Implantologie</div><p>15 ans d'expérience, formé à Paris et Genève.</p></div>
-                <div class="team-card"><div class="avatar">👩‍⚕️</div><h3>Dr. Sophie Martin</h3><div class="specialty">Orthodontiste</div><p>Spécialiste en aligneurs invisibles et orthopédie dento-faciale.</p></div>
-                <div class="team-card"><div class="avatar">👨‍⚕️</div><h3>Dr. Jean Dubois</h3><div class="specialty">Parodontologue</div><p>Expert en chirurgie des gencives et greffes osseuses.</p></div>
+                <div class="team-card">
+                    <div class="avatar">👨‍⚕️</div>
+                    <h3>Dr. MASSEDE ISIDORE</h3>
+                    <div class="specialty">Chirurgien-dentiste, Implantologie</div>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">👨‍⚕️</div>
+                    <h3>Dr. Jean LEROY</h3>
+                    <div class="specialty">Médecin généraliste</div>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">👩‍⚕️</div>
+                    <h3>Dr. Sophie MARTIN</h3>
+                    <div class="specialty">Orthodontiste</div>
+                </div>
             </div>
         </div>
     </section>
@@ -1037,7 +1050,7 @@
             <h2 class="section-title">Ils nous font confiance</h2>
             <p class="section-sub">Des retours sincères de nos patients.</p>
             <div class="testi-grid">
-                <div class="testi-card"><div class="stars">★★★★★</div><blockquote>“ Un accueil chaleureux, des soins sans douleur. Le Dr MENODJI est un artiste. ”</blockquote><div class="author">— Claire D.</div><div class="date">Mars 2026</div></div>
+                <div class="testi-card"><div class="stars">★★★★★</div><blockquote>“ Un accueil chaleureux, des soins sans douleur. Le Dr MASSEDE ISIDORE est un artiste. ”</blockquote><div class="author">— Claire D.</div><div class="date">Mars 2026</div></div>
                 <div class="testi-card"><div class="stars">★★★★★</div><blockquote>“ Mon fils de 8 ans adore venir ici ! L'équipe est géniale avec les enfants. ”</blockquote><div class="author">— Thomas R.</div><div class="date">Février 2026</div></div>
                 <div class="testi-card"><div class="stars">★★★★★</div><blockquote>“ Résultat bluffant sur mes facettes. Je recommande les yeux fermés. ”</blockquote><div class="author">— Emilie L.</div><div class="date">Janvier 2026</div></div>
             </div>
@@ -1063,9 +1076,9 @@
             <h2 class="section-title">Questions fréquentes</h2>
             <p class="section-sub">Tout ce que vous voulez savoir avant votre visite.</p>
             <div class="faq-list">
-                <div class="faq-item active"><button class="faq-question">Combien coûte une consultation ? <span class="arrow">▼</span></button><div class="faq-answer">La consultation de base est à 35€ (prise en charge par la Sécurité Sociale et les mutuelles). Un devis détaillé vous est remis avant tout acte.</div></div>
+                <div class="faq-item active"><button class="faq-question">Combien coûte une consultation ? <span class="arrow">▼</span></button><div class="faq-answer">La consultation de base est à 3000 FCFA (prise en charge par la Sécurité Sociale et les mutuelles). Un devis détaillé vous est remis avant tout acte.</div></div>
                 <div class="faq-item"><button class="faq-question">Est-ce que les soins sont douloureux ? <span class="arrow">▼</span></button><div class="faq-answer">Nous utilisons des anesthésiques de dernière génération et des techniques indolores. Nos patients repartent souvent surpris par le confort des soins.</div></div>
-                <div class="faq-item"><button class="faq-question">Que faire en cas d'urgence le week-end ? <span class="arrow">▼</span></button><div class="faq-answer">Nous avons un numéro d'astreinte 24h/24. Appelez le 01 23 45 67 89, un chirurgien vous rappellera dans les 30 minutes.</div></div>
+                <div class="faq-item"><button class="faq-question">Que faire en cas d'urgence le week-end ? <span class="arrow">▼</span></button><div class="faq-answer">Nous avons un numéro d'astreinte 24h/24. Appelez le 66-47-88-90, le docteur vous rappellera dans les 30 minutes.</div></div>
                 <div class="faq-item"><button class="faq-question">Proposez-vous des facilités de paiement ? <span class="arrow">▼</span></button><div class="faq-answer">Oui, nous acceptons le paiement en plusieurs fois sans frais (3x ou 4x) pour les soins importants (implants, orthodontie).</div></div>
                 <div class="faq-item"><button class="faq-question">Faut-il une ordonnance pour venir ? <span class="arrow">▼</span></button><div class="faq-answer">Non, vous pouvez consulter directement en cabinet sans ordonnance. Nous sommes conventionnés secteur 2 avec dépassements maîtrisés.</div></div>
             </div>
@@ -1088,9 +1101,10 @@
                     <button type="submit" class="btn-submit" style="margin-top:16px;">Envoyer un message ✉️</button>
                 </form>
                 <div class="contact-info">
-                    <div class="item"><span class="emoji">📍</span><div><strong>Adresse</strong><br>123 Rue des Soins, 75000 Paris</div></div>
-                    <div class="item"><span class="emoji">📞</span><div><strong>Téléphone</strong><br>01 23 45 67 89</div></div>
+                    <div class="item"><span class="emoji">📍</span><div><strong>Adresse</strong><br>Moundou, Tchad</div></div>
+                    <div class="item"><span class="emoji">📞</span><div><strong>Téléphone</strong><br>66-47-88-90</div></div>
                     <div class="item"><span class="emoji">✉️</span><div><strong>Email</strong><br>contact@menodji-dental.fr</div></div>
+                    <div class="item"><span class="emoji">🕐</span><div><strong>Horaires</strong><br>Lun-Ven 8h-13h / 15h30-18h<br>Sam 8h-13h</div></div>
                     <div class="map-placeholder">🗺️ [ Plan d'accès - Google Maps ]</div>
                 </div>
             </div>
@@ -1101,12 +1115,21 @@
     <footer>
         <div class="container">
             <div class="grid">
-                <div><h4>MENODJI Dental</h4><p style="max-width:260px;">Cabinet de chirurgie dentaire et d'esthétique, où la technologie rencontre la bienveillance.</p><div style="display:flex;gap:12px;margin-top:12px;font-size:1.6rem;">📱 👍 🐦</div></div>
-                <div><h4>Soins</h4><a href="#">Implantologie</a><a href="#">Orthodontie</a><a href="#">Esthétique</a><a href="#">Urgences</a></div>
+                <div><h4> Cabinet MENODJI </h4><p style="max-width:260px;">Cabinet de chirurgie dentaire et d'esthétique, où vous retrouvez le sourire.</p><div style="display:flex;gap:12px;margin-top:12px;font-size:1.6rem;">📱 👍 🐦</div></div>
+                <div><h4>Soins</h4><a href="#services">Implantologie</a><a href="#services">Orthodontie</a><a href="#services">Esthétique</a><a href="#services">Urgences</a></div>
                 <div><h4>Cabinet</h4><a href="#about">À propos</a><a href="#team">Équipe</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
-                <div class="newsletter"><h4>Newsletter</h4><p>Recevez nos conseils santé.</p><input type="email" placeholder="Votre email"><button>S'inscrire</button></div>
+                <div>
+                    <h4>Horaires</h4>
+                    <div class="footer-hours">
+                        <strong>Lundi - Vendredi</strong><br>
+                        8h00 – 13h00<br>
+                        15h30 – 18h00<br>
+                        <strong>Samedi</strong><br>
+                        8h00 – 13h00
+                    </div>
+                </div>
             </div>
-            <div class="footer-bottom">© 2026 Cabinet MENODJI - Tous droits réservés | <a href="auth.php" style="display:inline;color:var(--accent);">Espace Patient</a></div>
+            <div class="footer-bottom">© 2026 Cabinet MENODJI - Tous droits réservés | <a href="#" style="display:inline;color:var(--accent);">Espace Patient</a></div>
         </div>
     </footer>
 
@@ -1125,7 +1148,6 @@
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('open');
         });
-        // Close menu on link click (mobile)
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => navLinks.classList.remove('open'));
         });
@@ -1158,15 +1180,12 @@
             btn.addEventListener('click', () => {
                 const item = btn.parentElement;
                 const isActive = item.classList.contains('active');
-                // Close others
                 document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
                 if (!isActive) {
                     item.classList.add('active');
                 }
             });
         });
-        // Auto-close other FAQ items on load? No, keep first open.
     </script>
-
 </body>
 </html>
