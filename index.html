@@ -42,6 +42,7 @@
             color: var(--gray-800);
             line-height: 1.7;
             padding-top: 70px;
+            overflow-x: hidden;
         }
 
         a {
@@ -53,6 +54,127 @@
             margin: 0 auto;
             padding: 0 24px;
         }
+
+        /* ===== ANIMATIONS GLOBALES ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Classes d'animation */
+        .animate-fade-up {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-fade-left {
+            opacity: 0;
+            animation: fadeInLeft 0.8s ease forwards;
+        }
+
+        .animate-fade-right {
+            opacity: 0;
+            animation: fadeInRight 0.8s ease forwards;
+        }
+
+        .animate-scale {
+            opacity: 0;
+            animation: scaleIn 0.8s ease forwards;
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .animate-shimmer {
+            background: linear-gradient(90deg, var(--gray-200) 25%, var(--gray-100) 50%, var(--gray-200) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        /* Delais d'animation */
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
+        .delay-7 { animation-delay: 0.7s; }
+        .delay-8 { animation-delay: 0.8s; }
+        .delay-9 { animation-delay: 0.9s; }
 
         /* ===== TOP BAR ===== */
         .top-bar {
@@ -66,6 +188,7 @@
             right: 0;
             z-index: 1001;
             border-bottom: 2px solid var(--accent);
+            animation: slideInDown 0.6s ease;
         }
         .top-bar .container {
             display: flex;
@@ -118,6 +241,7 @@
             padding: 12px 0;
             border-bottom: 1px solid rgba(226, 232, 240, 0.6);
             transition: var(--transition);
+            animation: slideInDown 0.6s ease 0.2s both;
         }
         .navbar.scrolled {
             top: 0;
@@ -136,6 +260,10 @@
             align-items: center;
             gap: 12px;
             color: var(--primary);
+            transition: var(--transition);
+        }
+        .logo-link:hover {
+            transform: scale(1.02);
         }
         .logo-img {
             height: 80px;
@@ -176,6 +304,20 @@
         .nav-links a {
             transition: var(--transition);
             font-size: 0.95rem;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
         }
         .nav-links a:hover {
             color: var(--accent);
@@ -188,9 +330,12 @@
             font-weight: 600;
             transition: var(--transition);
         }
+        .nav-links .btn-rdv::after {
+            display: none;
+        }
         .nav-links .btn-rdv:hover {
             background: var(--primary);
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.02);
             box-shadow: 0 8px 20px rgba(43, 156, 156, 0.3);
         }
 
@@ -202,6 +347,10 @@
             cursor: pointer;
             background: none;
             border: none;
+            transition: var(--transition);
+        }
+        .hamburger:hover {
+            transform: scale(1.1);
         }
         .hamburger span {
             width: 28px;
@@ -224,10 +373,25 @@
             font-size: 0.95rem;
             margin-right: 10px;
             margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        .btn-cta:hover::before {
+            left: 100%;
         }
         .btn-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
         /* ===== HERO ===== */
@@ -246,6 +410,7 @@
             font-size: 18rem;
             opacity: 0.06;
             transform: rotate(15deg);
+            animation: float 8s ease-in-out infinite;
         }
         .hero .grid {
             display: grid;
@@ -297,6 +462,12 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            transition: var(--transition);
+            cursor: default;
+        }
+        .hero-badges .badge:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-lg);
         }
 
         /* ===== HERO IMAGE ===== */
@@ -311,6 +482,7 @@
             overflow: hidden;
             background: #f0f7fa;
             position: relative;
+            animation: fadeInRight 1s ease;
         }
         .hero-image img {
             width: 100%;
@@ -318,6 +490,10 @@
             object-fit: cover;
             border-radius: var(--radius);
             object-position: center 40%;
+            transition: transform 0.8s ease;
+        }
+        .hero-image:hover img {
+            transform: scale(1.05);
         }
 
         @media (max-width: 992px) {
@@ -347,11 +523,22 @@
             gap: 20px;
             text-align: center;
         }
+        .stats-grid .stat {
+            transition: var(--transition);
+            cursor: default;
+        }
+        .stats-grid .stat:hover {
+            transform: translateY(-5px);
+        }
         .stats-grid .stat h3 {
             font-size: 2.6rem;
             font-weight: 800;
             color: var(--primary);
             line-height: 1;
+            transition: var(--transition);
+        }
+        .stats-grid .stat:hover h3 {
+            color: var(--accent);
         }
         .stats-grid .stat h3 span {
             color: var(--accent);
@@ -372,6 +559,16 @@
             text-align: center;
             color: var(--primary);
             margin-bottom: 10px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 12px auto 0;
+            border-radius: 4px;
         }
         .section-sub {
             text-align: center;
@@ -395,6 +592,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            cursor: default;
         }
         .service-card::before {
             content: '';
@@ -408,7 +606,7 @@
             transition: var(--transition);
         }
         .service-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px) scale(1.02);
             box-shadow: var(--shadow-lg);
             border-color: var(--accent);
         }
@@ -418,6 +616,11 @@
         .service-card .icon {
             font-size: 3.2rem;
             margin-bottom: 12px;
+            display: inline-block;
+            transition: var(--transition);
+        }
+        .service-card:hover .icon {
+            transform: scale(1.2) rotate(10deg);
         }
         .service-card h3 {
             font-size: 1.2rem;
@@ -455,11 +658,20 @@
             align-items: center;
             gap: 12px;
             font-weight: 500;
+            transition: var(--transition);
+            cursor: default;
+        }
+        .about-text ul li:hover {
+            transform: translateX(8px);
         }
         .about-text ul li::before {
             content: "✅";
             color: var(--accent);
             font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        .about-text ul li:hover::before {
+            transform: scale(1.2);
         }
         .about-image {
             border-radius: var(--radius);
@@ -467,15 +679,20 @@
             overflow: hidden;
             box-shadow: var(--shadow-lg);
             border: 2px solid var(--accent-light);
+            transition: var(--transition);
+        }
+        .about-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
         }
         .about-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition);
+            transition: transform 0.8s ease;
         }
-        .about-image img:hover {
-            transform: scale(1.02);
+        .about-image:hover img {
+            transform: scale(1.05);
         }
 
         /* ===== TEAM ===== */
@@ -495,9 +712,10 @@
             text-align: center;
             box-shadow: var(--shadow-md);
             transition: var(--transition);
+            cursor: default;
         }
         .team-card:hover {
-            transform: scale(1.02);
+            transform: translateY(-10px) scale(1.02);
             box-shadow: var(--shadow-lg);
         }
         .team-card .avatar {
@@ -511,9 +729,18 @@
             justify-content: center;
             font-size: 3.5rem;
             border: 4px solid var(--accent);
+            transition: var(--transition);
+        }
+        .team-card:hover .avatar {
+            border-color: var(--primary);
+            transform: scale(1.05) rotate(5deg);
         }
         .team-card h3 {
             color: var(--primary);
+            transition: var(--transition);
+        }
+        .team-card:hover h3 {
+            color: var(--accent);
         }
         .team-card .specialty {
             color: var(--accent);
@@ -536,6 +763,12 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow-md);
             border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            cursor: default;
+        }
+        .testi-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
         }
         .testi-card .stars {
             color: #facc15;
@@ -546,6 +779,10 @@
             font-style: italic;
             margin: 12px 0;
             color: var(--gray-800);
+            transition: var(--transition);
+        }
+        .testi-card:hover blockquote {
+            color: var(--primary);
         }
         .testi-card .author {
             font-weight: 700;
@@ -573,9 +810,10 @@
             background: white;
             border: 1px solid var(--gray-200);
             transition: var(--transition);
+            cursor: default;
         }
         .blog-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
         }
         .blog-card .img {
@@ -586,6 +824,11 @@
             justify-content: center;
             font-size: 3rem;
             color: var(--gray-600);
+            transition: var(--transition);
+        }
+        .blog-card:hover .img {
+            background: var(--accent-light);
+            transform: scale(1.02);
         }
         .blog-card .body {
             padding: 20px 24px 28px;
@@ -599,6 +842,10 @@
         .blog-card .body h4 {
             margin: 6px 0 10px;
             color: var(--primary);
+            transition: var(--transition);
+        }
+        .blog-card:hover .body h4 {
+            color: var(--accent);
         }
         .blog-card .body p {
             color: var(--gray-600);
@@ -623,6 +870,10 @@
             overflow: hidden;
             box-shadow: var(--shadow-md);
             border: 1px solid var(--gray-200);
+            transition: var(--transition);
+        }
+        .faq-item:hover {
+            box-shadow: var(--shadow-lg);
         }
         .faq-question {
             padding: 20px 28px;
@@ -688,6 +939,7 @@
             outline: none;
             box-shadow: 0 0 0 4px rgba(43, 156, 156, 0.15);
             background: white;
+            transform: scale(1.01);
         }
         .contact-form textarea {
             resize: vertical;
@@ -703,10 +955,26 @@
             font-size: 1rem;
             cursor: pointer;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-form .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        .contact-form .btn-submit:hover::before {
+            left: 100%;
         }
         .contact-form .btn-submit:hover {
             background: var(--primary);
             transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(43, 156, 156, 0.3);
         }
         .contact-info {
             display: flex;
@@ -720,9 +988,19 @@
             background: var(--gray-50);
             padding: 16px 24px;
             border-radius: 16px;
+            transition: var(--transition);
+            cursor: default;
+        }
+        .contact-info .item:hover {
+            transform: translateX(8px);
+            background: var(--accent-light);
         }
         .contact-info .item .emoji {
             font-size: 1.8rem;
+            transition: var(--transition);
+        }
+        .contact-info .item:hover .emoji {
+            transform: scale(1.2) rotate(10deg);
         }
         .contact-info .map-placeholder {
             background: var(--gray-200);
@@ -734,6 +1012,12 @@
             color: var(--gray-600);
             font-weight: 500;
             border: 2px dashed var(--gray-400);
+            transition: var(--transition);
+        }
+        .contact-info .map-placeholder:hover {
+            background: var(--accent-light);
+            border-color: var(--accent);
+            transform: scale(1.02);
         }
 
         /* ===== FOOTER ===== */
@@ -752,6 +1036,15 @@
             color: white;
             font-weight: 700;
             margin-bottom: 14px;
+            position: relative;
+        }
+        footer h4::after {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 2px;
+            background: var(--accent);
+            margin-top: 8px;
         }
         footer a {
             display: block;
@@ -760,6 +1053,7 @@
         }
         footer a:hover {
             color: white;
+            transform: translateX(5px);
         }
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -796,9 +1090,16 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
             transition: var(--transition);
             color: white;
+            animation: float 3s ease-in-out infinite;
+        }
+        .floating-actions a:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .floating-actions a:nth-child(2) {
+            animation-delay: 0.5s;
         }
         .floating-actions a:hover {
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
         .floating-actions .phone {
             background: #2563eb;
@@ -835,6 +1136,7 @@
         }
         .back-top:hover {
             background: var(--accent);
+            transform: translateY(-3px) scale(1.1);
         }
 
         /* ===== RESPONSIVE ===== */
@@ -867,6 +1169,7 @@
                 box-shadow: var(--shadow-lg);
                 gap: 16px;
                 border-top: 1px solid var(--gray-200);
+                animation: fadeInUp 0.3s ease;
             }
             .nav-links.open { display: flex; }
             .hamburger { display: flex; }
@@ -950,17 +1253,17 @@
         <div class="container">
             <div class="grid">
                 <div class="hero-content">
-                    <h1>Votre sourire, <span>notre excellence</span></h1>
-                    <p>Des soins de pointe dans une ambiance familiale. Le Dr MASSEDE ISIDOIRE et son équipe vous accueillent avec empathie et rigueur.</p>
-                    <div>
+                    <h1 class="animate-fade-left">Votre sourire, <span>notre excellence</span></h1>
+                    <p class="animate-fade-left delay-2">Des soins de pointe dans une ambiance familiale. Le Dr MASSEDE ISIDOIRE et son équipe vous accueillent avec empathie et rigueur.</p>
+                    <div class="animate-fade-left delay-3">
                         <a href="#services" class="btn-cta" style="background:#16a34a;">Voir nos services</a>
                     </div>
-                    <div class="hero-badges">
+                    <div class="hero-badges animate-fade-left delay-4">
                         <span class="badge">🔬 Imagerie 3D</span>
                         <span class="badge">🦷 Implants haut de gamme</span>
                         <span class="badge">😌 Soins sans douleur</span>
                     </div>
-                    <a href="#contact" class="btn-rdv" style="display:inline-block;background:var(--primary);color:white;padding:14px 40px;border-radius:60px;font-weight:700;font-size:1.1rem;margin-top:10px;">Prendre rendez-vous</a>
+                    <a href="#contact" class="btn-rdv animate-fade-left delay-5" style="display:inline-block;background:var(--primary);color:white;padding:14px 40px;border-radius:60px;font-weight:700;font-size:1.1rem;margin-top:10px;">Prendre rendez-vous</a>
                 </div>
                 <div class="hero-image">
                     <img src="logo3.jpeg" alt="Cabinet Bucco-Dentaire MENODJI">
@@ -973,10 +1276,10 @@
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
-                <div class="stat"><h3>1<span>+</span></h3><p>Année d'expertise</p></div>
-                <div class="stat"><h3>200<span>+</span></h3><p>Patients accompagnés</p></div>
-                <div class="stat"><h3>98<span>%</span></h3><p>Satisfaction client</p></div>
-                <div class="stat"><h3>02</h3><p>Chirurgiens dédiés</p></div>
+                <div class="stat animate-scale delay-1"><h3>1<span>+</span></h3><p>Année d'expertise</p></div>
+                <div class="stat animate-scale delay-2"><h3>200<span>+</span></h3><p>Patients accompagnés</p></div>
+                <div class="stat animate-scale delay-3"><h3>98<span>%</span></h3><p>Satisfaction client</p></div>
+                <div class="stat animate-scale delay-4"><h3>02</h3><p>Chirurgiens dédiés</p></div>
             </div>
         </div>
     </section>
@@ -984,15 +1287,15 @@
     <!-- ===== SERVICES ===== -->
     <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">Nos soins sur mesure</h2>
-            <p class="section-sub">De l'enfant à l'adulte, nous prenons en charge l'ensemble de vos besoins dentaires.</p>
+            <h2 class="section-title animate-fade-up">Nos soins sur mesure</h2>
+            <p class="section-sub animate-fade-up delay-2">De l'enfant à l'adulte, nous prenons en charge l'ensemble de vos besoins dentaires.</p>
             <div class="services-grid">
-                <div class="service-card"><div class="icon">🦷</div><h3>Implantologie</h3><p>Implants zirconium ou titane, pose en une séance avec CFAO.</p></div>
-                <div class="service-card"><div class="icon">😁</div><h3>Orthodontie</h3><p>Gouttières invisibles (Invisalign) ou multi-bagues pour toutes les générations.</p></div>
-                <div class="service-card"><div class="icon">✨</div><h3>Esthétique</h3><p>Facettes, blanchiment, couronnes céramique pour un sourire éclatant.</p></div>
-                <div class="service-card"><div class="icon">🧸</div><h3>Pédodontie</h3><p>Soins préventifs et curatifs pour les enfants, dans la bonne humeur.</p></div>
-                <div class="service-card"><div class="icon">🩺</div><h3>Parodontologie</h3><p>Traitement des gencives, détartrage profond et maintenance.</p></div>
-                <div class="service-card"><div class="icon">⚡</div><h3>Urgences</h3><p>Douleur, fracture, avulsion : nous vous recevons sous 24h.</p></div>
+                <div class="service-card animate-scale delay-1"><div class="icon">🦷</div><h3>Implantologie</h3><p>Implants zirconium ou titane, pose en une séance avec CFAO.</p></div>
+                <div class="service-card animate-scale delay-2"><div class="icon">😁</div><h3>Orthodontie</h3><p>Gouttières invisibles (Invisalign) ou multi-bagues pour toutes les générations.</p></div>
+                <div class="service-card animate-scale delay-3"><div class="icon">✨</div><h3>Esthétique</h3><p>Facettes, blanchiment, couronnes céramique pour un sourire éclatant.</p></div>
+                <div class="service-card animate-scale delay-4"><div class="icon">🧸</div><h3>Pédodontie</h3><p>Soins préventifs et curatifs pour les enfants, dans la bonne humeur.</p></div>
+                <div class="service-card animate-scale delay-5"><div class="icon">🩺</div><h3>Parodontologie</h3><p>Traitement des gencives, détartrage profond et maintenance.</p></div>
+                <div class="service-card animate-scale delay-6"><div class="icon">⚡</div><h3>Urgences</h3><p>Douleur, fracture, avulsion : nous vous recevons sous 24h.</p></div>
             </div>
         </div>
     </section>
@@ -1001,7 +1304,7 @@
     <section class="about" id="about">
         <div class="container">
             <div class="about-grid">
-                <div class="about-text">
+                <div class="about-text animate-fade-left">
                     <h2>Un cabinet d'exception</h2>
                     <p>Fondé par le Dr. MASSEDE ISIDOIRE, notre cabinet allie une technologie de pointe à une approche profondément humaine. Chaque traitement est personnalisé.</p>
                     <ul>
@@ -1012,7 +1315,7 @@
                     </ul>
                     <p style="margin-top:10px;font-weight:600;color:var(--accent);">👉 Nous prenons en charge votre devis mutuelle.</p>
                 </div>
-                <div class="about-image">
+                <div class="about-image animate-fade-right">
                     <img src="cabinet-interieur.jpg" alt="Notre cabinet moderne et accueillant">
                 </div>
             </div>
@@ -1022,20 +1325,20 @@
     <!-- ===== TEAM ===== -->
     <section class="team" id="team">
         <div class="container">
-            <h2 class="section-title">Notre équipe</h2>
-            <p class="section-sub">Des experts passionnés à votre écoute.</p>
+            <h2 class="section-title animate-fade-up">Notre équipe</h2>
+            <p class="section-sub animate-fade-up delay-2">Des experts passionnés à votre écoute.</p>
             <div class="team-grid">
-                <div class="team-card">
+                <div class="team-card animate-scale delay-1">
                     <div class="avatar">👨‍⚕️</div>
                     <h3>Dr. MASSEDE ISIDORE</h3>
                     <div class="specialty">Chirurgien-dentiste, Implantologie</div>
                 </div>
-                <div class="team-card">
+                <div class="team-card animate-scale delay-2">
                     <div class="avatar">👨‍⚕️</div>
                     <h3>Dr. Jean LEROY</h3>
                     <div class="specialty">Médecin généraliste</div>
                 </div>
-                <div class="team-card">
+                <div class="team-card animate-scale delay-3">
                     <div class="avatar">👩‍⚕️</div>
                     <h3>Dr. Sophie MARTIN</h3>
                     <div class="specialty">Orthodontiste</div>
@@ -1047,12 +1350,12 @@
     <!-- ===== TESTIMONIALS ===== -->
     <section class="testimonials" id="testimonials">
         <div class="container">
-            <h2 class="section-title">Ils nous font confiance</h2>
-            <p class="section-sub">Des retours sincères de nos patients.</p>
+            <h2 class="section-title animate-fade-up">Ils nous font confiance</h2>
+            <p class="section-sub animate-fade-up delay-2">Des retours sincères de nos patients.</p>
             <div class="testi-grid">
-                <div class="testi-card"><div class="stars">★★★★★</div><blockquote>“ Un accueil chaleureux, des soins sans douleur. Le Dr MASSEDE ISIDORE est un artiste. ”</blockquote><div class="author">— Claire D.</div><div class="date">Mars 2026</div></div>
-                <div class="testi-card"><div class="stars">★★★★★</div><blockquote>“ Mon fils de 8 ans adore venir ici ! L'équipe est géniale avec les enfants. ”</blockquote><div class="author">— Thomas R.</div><div class="date">Février 2026</div></div>
-                <div class="testi-card"><div class="stars">★★★★★</div><blockquote>“ Résultat bluffant sur mes facettes. Je recommande les yeux fermés. ”</blockquote><div class="author">— Emilie L.</div><div class="date">Janvier 2026</div></div>
+                <div class="testi-card animate-scale delay-1"><div class="stars">★★★★★</div><blockquote>“ Un accueil chaleureux, des soins sans douleur. Le Dr MASSEDE ISIDORE est un artiste. ”</blockquote><div class="author">— Claire D.</div><div class="date">Mars 2026</div></div>
+                <div class="testi-card animate-scale delay-2"><div class="stars">★★★★★</div><blockquote>“ Mon fils de 8 ans adore venir ici ! L'équipe est géniale avec les enfants. ”</blockquote><div class="author">— Thomas R.</div><div class="date">Février 2026</div></div>
+                <div class="testi-card animate-scale delay-3"><div class="stars">★★★★★</div><blockquote>“ Résultat bluffant sur mes facettes. Je recommande les yeux fermés. ”</blockquote><div class="author">— Emilie L.</div><div class="date">Janvier 2026</div></div>
             </div>
         </div>
     </section>
@@ -1060,12 +1363,12 @@
     <!-- ===== BLOG ===== -->
     <section class="blog" id="blog">
         <div class="container">
-            <h2 class="section-title">Actualités & conseils</h2>
-            <p class="section-sub">Retrouvez nos articles pour prendre soin de votre sourire au quotidien.</p>
+            <h2 class="section-title animate-fade-up">Actualités & conseils</h2>
+            <p class="section-sub animate-fade-up delay-2">Retrouvez nos articles pour prendre soin de votre sourire au quotidien.</p>
             <div class="blog-grid">
-                <div class="blog-card"><div class="img">🪥</div><div class="body"><div class="date">10 avril 2026</div><h4>Comment bien brosser ses dents ?</h4><p>Les bons gestes et les erreurs à éviter pour une hygiène parfaite.</p></div></div>
-                <div class="blog-card"><div class="img">🍬</div><div class="body"><div class="date">3 avril 2026</div><h4>Alimentation et santé dentaire</h4><p>Les aliments qui renforcent l'émail et ceux qui abîment les dents.</p></div></div>
-                <div class="blog-card"><div class="img">😬</div><div class="body"><div class="date">28 mars 2026</div><h4>Orthodontie adulte : mythes et réalités</h4><p>Il n'est jamais trop tard pour aligner ses dents. On vous dit tout.</p></div></div>
+                <div class="blog-card animate-scale delay-1"><div class="img">🪥</div><div class="body"><div class="date">10 avril 2026</div><h4>Comment bien brosser ses dents ?</h4><p>Les bons gestes et les erreurs à éviter pour une hygiène parfaite.</p></div></div>
+                <div class="blog-card animate-scale delay-2"><div class="img">🍬</div><div class="body"><div class="date">3 avril 2026</div><h4>Alimentation et santé dentaire</h4><p>Les aliments qui renforcent l'émail et ceux qui abîment les dents.</p></div></div>
+                <div class="blog-card animate-scale delay-3"><div class="img">😬</div><div class="body"><div class="date">28 mars 2026</div><h4>Orthodontie adulte : mythes et réalités</h4><p>Il n'est jamais trop tard pour aligner ses dents. On vous dit tout.</p></div></div>
             </div>
         </div>
     </section>
@@ -1073,14 +1376,14 @@
     <!-- ===== FAQ ===== -->
     <section class="faq" id="faq">
         <div class="container">
-            <h2 class="section-title">Questions fréquentes</h2>
-            <p class="section-sub">Tout ce que vous voulez savoir avant votre visite.</p>
+            <h2 class="section-title animate-fade-up">Questions fréquentes</h2>
+            <p class="section-sub animate-fade-up delay-2">Tout ce que vous voulez savoir avant votre visite.</p>
             <div class="faq-list">
-                <div class="faq-item active"><button class="faq-question">Combien coûte une consultation ? <span class="arrow">▼</span></button><div class="faq-answer">La consultation de base est à 3000 FCFA (prise en charge par la Sécurité Sociale et les mutuelles). Un devis détaillé vous est remis avant tout acte.</div></div>
-                <div class="faq-item"><button class="faq-question">Est-ce que les soins sont douloureux ? <span class="arrow">▼</span></button><div class="faq-answer">Nous utilisons des anesthésiques de dernière génération et des techniques indolores. Nos patients repartent souvent surpris par le confort des soins.</div></div>
-                <div class="faq-item"><button class="faq-question">Que faire en cas d'urgence le week-end ? <span class="arrow">▼</span></button><div class="faq-answer">Nous avons un numéro d'astreinte 24h/24. Appelez le 66-47-88-90, le docteur vous rappellera dans les 30 minutes.</div></div>
-                <div class="faq-item"><button class="faq-question">Proposez-vous des facilités de paiement ? <span class="arrow">▼</span></button><div class="faq-answer">Oui, nous acceptons le paiement en plusieurs fois sans frais (3x ou 4x) pour les soins importants (implants, orthodontie).</div></div>
-                <div class="faq-item"><button class="faq-question">Faut-il une ordonnance pour venir ? <span class="arrow">▼</span></button><div class="faq-answer">Non, vous pouvez consulter directement en cabinet sans ordonnance. Nous sommes conventionnés secteur 2 avec dépassements maîtrisés.</div></div>
+                <div class="faq-item active animate-scale delay-1"><button class="faq-question">Combien coûte une consultation ? <span class="arrow">▼</span></button><div class="faq-answer">La consultation de base est à 3000 FCFA (prise en charge par la Sécurité Sociale et les mutuelles). Un devis détaillé vous est remis avant tout acte.</div></div>
+                <div class="faq-item animate-scale delay-2"><button class="faq-question">Est-ce que les soins sont douloureux ? <span class="arrow">▼</span></button><div class="faq-answer">Nous utilisons des anesthésiques de dernière génération et des techniques indolores. Nos patients repartent souvent surpris par le confort des soins.</div></div>
+                <div class="faq-item animate-scale delay-3"><button class="faq-question">Que faire en cas d'urgence le week-end ? <span class="arrow">▼</span></button><div class="faq-answer">Nous avons un numéro d'astreinte 24h/24. Appelez le 66-47-88-90, le docteur vous rappellera dans les 30 minutes.</div></div>
+                <div class="faq-item animate-scale delay-4"><button class="faq-question">Proposez-vous des facilités de paiement ? <span class="arrow">▼</span></button><div class="faq-answer">Oui, nous acceptons le paiement en plusieurs fois sans frais (3x ou 4x) pour les soins importants (implants, orthodontie).</div></div>
+                <div class="faq-item animate-scale delay-5"><button class="faq-question">Faut-il une ordonnance pour venir ? <span class="arrow">▼</span></button><div class="faq-answer">Non, vous pouvez consulter directement en cabinet sans ordonnance. Nous sommes conventionnés secteur 2 avec dépassements maîtrisés.</div></div>
             </div>
         </div>
     </section>
@@ -1088,10 +1391,10 @@
     <!-- ===== CONTACT ===== -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title">Prenez contact</h2>
-            <p class="section-sub">Un renseignement ? Une demande de devis ? Écrivez-nous.</p>
+            <h2 class="section-title animate-fade-up">Prenez contact</h2>
+            <p class="section-sub animate-fade-up delay-2">Un renseignement ? Une demande de devis ? Écrivez-nous.</p>
             <div class="contact-grid">
-                <form class="contact-form">
+                <form class="contact-form animate-fade-left">
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
                         <input type="text" placeholder="Votre nom" required>
                         <input type="email" placeholder="Votre email" required>
@@ -1100,7 +1403,7 @@
                     <textarea placeholder="Votre message..."></textarea>
                     <button type="submit" class="btn-submit" style="margin-top:16px;">Envoyer un message ✉️</button>
                 </form>
-                <div class="contact-info">
+                <div class="contact-info animate-fade-right">
                     <div class="item"><span class="emoji">📍</span><div><strong>Adresse</strong><br>Moundou, Tchad</div></div>
                     <div class="item"><span class="emoji">📞</span><div><strong>Téléphone</strong><br>66-47-88-90</div></div>
                     <div class="item"><span class="emoji">✉️</span><div><strong>Email</strong><br>contact@menodji-dental.fr</div></div>
@@ -1115,10 +1418,10 @@
     <footer>
         <div class="container">
             <div class="grid">
-                <div><h4> Cabinet MENODJI </h4><p style="max-width:260px;">Cabinet de chirurgie dentaire et d'esthétique, où vous retrouvez le sourire.</p><div style="display:flex;gap:12px;margin-top:12px;font-size:1.6rem;">📱 👍 🐦</div></div>
-                <div><h4>Soins</h4><a href="#services">Implantologie</a><a href="#services">Orthodontie</a><a href="#services">Esthétique</a><a href="#services">Urgences</a></div>
-                <div><h4>Cabinet</h4><a href="#about">À propos</a><a href="#team">Équipe</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
-                <div>
+                <div class="animate-fade-up"><h4> Cabinet MENODJI </h4><p style="max-width:260px;">Cabinet de chirurgie dentaire et d'esthétique, où vous retrouvez le sourire.</p><div style="display:flex;gap:12px;margin-top:12px;font-size:1.6rem;">📱 👍 🐦</div></div>
+                <div class="animate-fade-up delay-2"><h4>Soins</h4><a href="#services">Implantologie</a><a href="#services">Orthodontie</a><a href="#services">Esthétique</a><a href="#services">Urgences</a></div>
+                <div class="animate-fade-up delay-3"><h4>Cabinet</h4><a href="#about">À propos</a><a href="#team">Équipe</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
+                <div class="animate-fade-up delay-4">
                     <h4>Horaires</h4>
                     <div class="footer-hours">
                         <strong>Lundi - Vendredi</strong><br>
@@ -1129,7 +1432,7 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">© 2026 Cabinet MENODJI - Tous droits réservés | <a href="#" style="display:inline;color:var(--accent);">Espace Patient</a></div>
+            <div class="footer-bottom animate-fade-up delay-5">© 2026 Cabinet MENODJI - Tous droits réservés | <a href="#" style="display:inline;color:var(--accent);">Espace Patient</a></div>
         </div>
     </footer>
 
@@ -1186,6 +1489,40 @@
                 }
             });
         });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-fade-up, .animate-fade-left, .animate-fade-right, .animate-scale').forEach(el => {
+            el.style.opacity = '0';
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Start animations for elements already in view
+        setTimeout(() => {
+            document.querySelectorAll('.animate-fade-up, .animate-fade-left, .animate-fade-right, .animate-scale').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    el.style.opacity = '1';
+                    el.style.animationPlayState = 'running';
+                }
+            });
+        }, 100);
     </script>
+
 </body>
 </html>
