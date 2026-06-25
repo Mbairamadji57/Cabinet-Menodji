@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cabinet BUCCO-Dentaire MENODJI</title>
+    <meta name="description" content="Site officiel du Cabinet Bucco-Dentaire Menodji à Moundou, soins dentaires et bucco-dentaires.">
+    <meta name="keywords" content="dentiste Moundou, soins dentaires, Cabinet Menodji, bucco-dentaire">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -24,6 +26,7 @@
             --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.05);
             --radius: 28px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --facebook: #1877f2;
         }
 
         * {
@@ -55,49 +58,25 @@
             padding: 0 24px;
         }
 
-        /* ===== ANIMATIONS GLOBALES ===== */
+        /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         @keyframes float {
@@ -105,9 +84,6 @@
             50% { transform: translateY(-15px); }
         }
 
-        /* ===== ANIMATIONS ICÔNES NON UNIFORMES ===== */
-
-        /* Icône 1 - Mouvement en 8 avec rotation */
         @keyframes iconFloat1 {
             0% { transform: translate(0, 0) scale(1) rotate(0deg); }
             20% { transform: translate(25px, -30px) scale(1.1) rotate(12deg); }
@@ -117,7 +93,6 @@
             100% { transform: translate(0, 0) scale(1) rotate(0deg); }
         }
 
-        /* Icône 2 - Mouvement en spirale */
         @keyframes iconFloat2 {
             0% { transform: translate(0, 0) scale(1) rotate(0deg); }
             25% { transform: translate(-30px, -20px) scale(1.2) rotate(-15deg); }
@@ -126,7 +101,6 @@
             100% { transform: translate(0, 0) scale(1) rotate(0deg); }
         }
 
-        /* Icône 3 - Mouvement en vague sinusoïdale */
         @keyframes iconFloat3 {
             0% { transform: translate(0, 0) scale(1) rotate(0deg); }
             15% { transform: translate(35px, -15px) scale(1.15) rotate(8deg); }
@@ -137,7 +111,6 @@
             100% { transform: translate(0, 0) scale(1) rotate(0deg); }
         }
 
-        /* Icône 4 - Mouvement circulaire elliptique */
         @keyframes iconFloat4 {
             0% { transform: translate(0, 0) scale(1) rotate(0deg); }
             25% { transform: translate(-20px, -25px) scale(0.9) rotate(-20deg); }
@@ -146,7 +119,6 @@
             100% { transform: translate(0, 0) scale(1) rotate(0deg); }
         }
 
-        /* Icône 5 - Mouvement aléatoire avec rebond */
         @keyframes iconFloat5 {
             0% { transform: translate(0, 0) scale(1) rotate(0deg); }
             10% { transform: translate(15px, -10px) scale(1.1) rotate(5deg); }
@@ -157,7 +129,6 @@
             100% { transform: translate(0, 0) scale(1) rotate(0deg); }
         }
 
-        /* Icône 6 - Mouvement en pendule */
         @keyframes iconFloat6 {
             0% { transform: translate(0, 0) scale(1) rotate(0deg); }
             20% { transform: translate(20px, -20px) scale(0.85) rotate(-5deg); }
@@ -167,76 +138,39 @@
             100% { transform: translate(0, 0) scale(1) rotate(0deg); }
         }
 
-        @keyframes pulse {
+        @keyframes pulse-badge {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.05); background: #b91c1c; }
         }
 
-        @keyframes shimmer {
-            0% {
-                background-position: -200% 0;
-            }
-            100% {
-                background-position: 200% 0;
-            }
+        @keyframes pulseRing {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
         }
 
         @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
         /* Classes d'animation */
-        .animate-fade-up {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
+        .animate-fade-up { opacity: 0; animation: fadeInUp 0.8s ease forwards; }
+        .animate-fade-left { opacity: 0; animation: fadeInLeft 0.8s ease forwards; }
+        .animate-fade-right { opacity: 0; animation: fadeInRight 0.8s ease forwards; }
+        .animate-scale { opacity: 0; animation: scaleIn 0.8s ease forwards; }
+        .animate-float { animation: float 4s ease-in-out infinite; }
 
-        .animate-fade-left {
-            opacity: 0;
-            animation: fadeInLeft 0.8s ease forwards;
-        }
-
-        .animate-fade-right {
-            opacity: 0;
-            animation: fadeInRight 0.8s ease forwards;
-        }
-
-        .animate-scale {
-            opacity: 0;
-            animation: scaleIn 0.8s ease forwards;
-        }
-
-        .animate-float {
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .animate-pulse {
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .animate-shimmer {
-            background: linear-gradient(90deg, var(--gray-200) 25%, var(--gray-100) 50%, var(--gray-200) 75%);
-            background-size: 200% 100%;
-            animation: shimmer 3s ease-in-out infinite;
-        }
-
-        /* Delais d'animation */
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
         .delay-5 { animation-delay: 0.5s; }
         .delay-6 { animation-delay: 0.6s; }
-        .delay-7 { animation-delay: 0.7s; }
-        .delay-8 { animation-delay: 0.8s; }
-        .delay-9 { animation-delay: 0.9s; }
 
         /* ===== TOP BAR ===== */
         .top-bar {
@@ -285,10 +219,6 @@
             margin-left: 6px;
             animation: pulse-badge 1.5s infinite;
         }
-        @keyframes pulse-badge {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); background: #b91c1c; }
-        }
 
         /* ===== NAVIGATION ===== */
         .navbar {
@@ -316,7 +246,6 @@
             justify-content: space-between;
         }
 
-        /* --- LOGO AVEC IMAGE --- */
         .logo-link {
             display: flex;
             align-items: center;
@@ -401,7 +330,6 @@
             box-shadow: 0 8px 20px rgba(43, 156, 156, 0.3);
         }
 
-        /* Hamburger */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -532,7 +460,7 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* ===== HERO IMAGE AVEC ICÔNES FLOTTANTES ===== */
+        /* ===== HERO IMAGE ===== */
         .hero-image {
             border-radius: var(--radius);
             height: 450px;
@@ -558,7 +486,6 @@
             transform: scale(1.05);
         }
 
-        /* Icônes flottantes - Sans fond blanc avec effets au survol */
         .floating-icon {
             position: absolute;
             font-size: 3rem;
@@ -580,8 +507,6 @@
             line-height: 1;
             cursor: pointer;
         }
-
-        /* Effet au survol */
         .floating-icon:hover {
             transform: scale(1.6) rotate(20deg) !important;
             filter: drop-shadow(0 12px 40px rgba(43, 156, 156, 0.5)) drop-shadow(0 0 60px rgba(43, 156, 156, 0.2));
@@ -589,8 +514,6 @@
             z-index: 10;
             animation-play-state: paused !important;
         }
-
-        /* Animation de pulsation au survol */
         .floating-icon:hover::after {
             content: '';
             position: absolute;
@@ -601,56 +524,13 @@
             z-index: -1;
         }
 
-        @keyframes pulseRing {
-            0% {
-                transform: scale(0.5);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.5);
-                opacity: 0;
-            }
-        }
+        .floating-icon:nth-child(2) { top: 5%; right: 3%; animation: iconFloat1 7s ease-in-out infinite; font-size: 3.2rem; }
+        .floating-icon:nth-child(3) { bottom: 10%; left: 2%; animation: iconFloat2 8.5s ease-in-out infinite; font-size: 2.8rem; }
+        .floating-icon:nth-child(4) { top: 12%; left: 5%; animation: iconFloat3 9s ease-in-out infinite; font-size: 3.5rem; }
+        .floating-icon:nth-child(5) { bottom: 22%; right: 4%; animation: iconFloat4 6.5s ease-in-out infinite; font-size: 2.6rem; }
+        .floating-icon:nth-child(6) { top: 48%; left: 1%; animation: iconFloat5 10s ease-in-out infinite; font-size: 3rem; }
+        .floating-icon:nth-child(7) { top: 42%; right: 1%; animation: iconFloat6 7.5s ease-in-out infinite; font-size: 2.9rem; }
 
-        /* Positions et animations uniques pour chaque icône */
-        .floating-icon:nth-child(2) {
-            top: 5%;
-            right: 3%;
-            animation: iconFloat1 7s ease-in-out infinite;
-            font-size: 3.2rem;
-        }
-        .floating-icon:nth-child(3) {
-            bottom: 10%;
-            left: 2%;
-            animation: iconFloat2 8.5s ease-in-out infinite;
-            font-size: 2.8rem;
-        }
-        .floating-icon:nth-child(4) {
-            top: 12%;
-            left: 5%;
-            animation: iconFloat3 9s ease-in-out infinite;
-            font-size: 3.5rem;
-        }
-        .floating-icon:nth-child(5) {
-            bottom: 22%;
-            right: 4%;
-            animation: iconFloat4 6.5s ease-in-out infinite;
-            font-size: 2.6rem;
-        }
-        .floating-icon:nth-child(6) {
-            top: 48%;
-            left: 1%;
-            animation: iconFloat5 10s ease-in-out infinite;
-            font-size: 3rem;
-        }
-        .floating-icon:nth-child(7) {
-            top: 42%;
-            right: 1%;
-            animation: iconFloat6 7.5s ease-in-out infinite;
-            font-size: 2.9rem;
-        }
-
-        /* Bulles de fond */
         .bubble {
             position: absolute;
             border-radius: 50%;
@@ -658,27 +538,9 @@
             pointer-events: none;
             z-index: 0;
         }
-        .bubble:nth-child(8) {
-            width: 120px;
-            height: 120px;
-            bottom: 10%;
-            right: 15%;
-            animation: float 8s ease-in-out infinite;
-        }
-        .bubble:nth-child(9) {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            right: 30%;
-            animation: float 6s ease-in-out infinite 1s;
-        }
-        .bubble:nth-child(10) {
-            width: 150px;
-            height: 150px;
-            bottom: 5%;
-            left: 20%;
-            animation: float 10s ease-in-out infinite 0.5s;
-        }
+        .bubble:nth-child(8) { width: 120px; height: 120px; bottom: 10%; right: 15%; animation: float 8s ease-in-out infinite; }
+        .bubble:nth-child(9) { width: 80px; height: 80px; top: 20%; right: 30%; animation: float 6s ease-in-out infinite 1s; }
+        .bubble:nth-child(10) { width: 150px; height: 150px; bottom: 5%; left: 20%; animation: float 10s ease-in-out infinite 0.5s; }
 
         @media (max-width: 992px) {
             .hero-image { height: 380px; }
@@ -701,6 +563,147 @@
             .floating-icon { font-size: 1.6rem !important; }
             .floating-icon:nth-child(3) { display: none; }
             .floating-icon:nth-child(5) { display: none; }
+        }
+
+        /* ===== ANNONCE DYNAMIQUE ===== */
+        .orl-announce {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 20px 0;
+            border-bottom: 4px solid #f59e0b;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        .orl-announce.passed {
+            background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+            border-bottom-color: #9ca3af;
+        }
+        .orl-announce.passed .orl-date {
+            background: #6b7280;
+        }
+        .orl-announce::before {
+            content: '🔔';
+            position: absolute;
+            right: -20px;
+            top: -20px;
+            font-size: 8rem;
+            opacity: 0.1;
+            transform: rotate(20deg);
+        }
+        .orl-announce.passed::before {
+            content: '📅';
+        }
+        .orl-announce .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        .orl-announce .orl-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .orl-announce .orl-icon {
+            font-size: 2.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        .orl-announce .orl-text {
+            font-weight: 700;
+            color: #92400e;
+        }
+        .orl-announce.passed .orl-text {
+            color: #4b5563;
+        }
+        .orl-announce .orl-text strong {
+            color: #dc2626;
+            font-size: 1.1rem;
+        }
+        .orl-announce.passed .orl-text strong {
+            color: #6b7280;
+        }
+        .orl-announce .orl-date {
+            background: #dc2626;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            animation: pulse-badge 2s infinite;
+            display: inline-block;
+        }
+        .orl-announce.passed .orl-date {
+            animation: none;
+        }
+        .orl-announce .orl-more {
+            color: #92400e;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .orl-announce .orl-more:hover {
+            color: #dc2626;
+            transform: translateX(5px);
+            transition: var(--transition);
+        }
+        .orl-announce.passed .orl-more {
+            color: #4b5563;
+        }
+        .orl-announce .share-facebook {
+            background: var(--facebook);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        .orl-announce .share-facebook:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4);
+        }
+        .orl-announce .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .orl-announce .status-badge.active {
+            background: #22c55e;
+            color: white;
+            animation: blink 1.5s infinite;
+        }
+        .orl-announce .status-badge.passed {
+            background: #6b7280;
+            color: white;
+        }
+        .orl-announce .status-badge.soon {
+            background: #f59e0b;
+            color: white;
+            animation: blink 2s infinite;
+        }
+
+        @media (max-width: 768px) {
+            .orl-announce .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .orl-announce .orl-content {
+                flex-direction: column;
+                text-align: center;
+            }
         }
 
         /* ===== STATS ===== */
@@ -887,6 +890,43 @@
             transform: scale(1.05);
         }
 
+        /* ===== SOCIAL LINKS ===== */
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gray-200);
+            color: var(--gray-600);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+        .social-links .facebook {
+            background: #1877f2;
+            color: white;
+        }
+        .social-links .facebook:hover {
+            box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4);
+        }
+        .social-links .phone-link {
+            background: #25d366;
+            color: white;
+        }
+        .social-links .phone-link:hover {
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
         /* ===== TEAM ===== */
         .team {
             padding: 80px 0;
@@ -985,10 +1025,49 @@
             font-size: 0.8rem;
         }
 
-        /* ===== BLOG ===== */
+        /* ===== ACTUALITÉS DYNAMIQUES ===== */
         .blog {
             padding: 80px 0;
             background: white;
+        }
+        .blog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .blog-header .share-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        .blog-header .share-buttons button {
+            padding: 10px 20px;
+            border-radius: 60px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        .blog-header .share-buttons .share-fb {
+            background: var(--facebook);
+            color: white;
+        }
+        .blog-header .share-buttons .share-fb:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4);
+        }
+        .blog-header .share-buttons .share-wa {
+            background: #25d366;
+            color: white;
+        }
+        .blog-header .share-buttons .share-wa:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
         }
         .blog-grid {
             display: grid;
@@ -1017,6 +1096,26 @@
             font-size: 3rem;
             color: var(--gray-600);
             transition: var(--transition);
+            position: relative;
+        }
+        .blog-card .img .news-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #dc2626;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            animation: pulse-badge 2s infinite;
+        }
+        .blog-card .img .news-badge.soon {
+            background: #f59e0b;
+        }
+        .blog-card .img .news-badge.passed {
+            background: #6b7280;
+            animation: none;
         }
         .blog-card:hover .img {
             background: var(--accent-light);
@@ -1031,6 +1130,10 @@
             font-size: 0.8rem;
             text-transform: uppercase;
         }
+        .blog-card .body .date.passed {
+            color: #6b7280;
+            text-decoration: line-through;
+        }
         .blog-card .body h4 {
             margin: 6px 0 10px;
             color: var(--primary);
@@ -1042,6 +1145,142 @@
         .blog-card .body p {
             color: var(--gray-600);
             font-size: 0.9rem;
+        }
+        .blog-card .body .blog-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .blog-card .body .blog-actions button {
+            padding: 6px 14px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .blog-card .body .blog-actions .fb-share {
+            background: var(--facebook);
+            color: white;
+        }
+        .blog-card .body .blog-actions .fb-share:hover {
+            transform: scale(1.05);
+        }
+        .blog-card .body .blog-actions .wa-share {
+            background: #25d366;
+            color: white;
+        }
+        .blog-card .body .blog-actions .wa-share:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== FACEBOOK FEED ===== */
+        .facebook-feed {
+            padding: 60px 0;
+            background: var(--gray-100);
+        }
+        .facebook-feed .feed-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .facebook-feed .feed-container .fb-page-embed {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-200);
+            padding: 20px;
+        }
+        .facebook-feed .feed-container .fb-page-embed .fb-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .facebook-feed .feed-container .fb-page-embed .fb-header .fb-logo {
+            color: var(--facebook);
+            font-size: 2rem;
+        }
+        .facebook-feed .feed-container .fb-page-embed .fb-header h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        .facebook-feed .feed-container .fb-page-embed .fb-post {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .facebook-feed .feed-container .fb-page-embed .fb-post:last-child {
+            border-bottom: none;
+        }
+        .facebook-feed .feed-container .fb-page-embed .fb-post .post-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .facebook-feed .feed-container .fb-page-embed .fb-post .post-header .post-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--facebook);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .facebook-feed .feed-container .fb-page-embed .fb-post .post-header .post-name {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+        .facebook-feed .feed-container .fb-page-embed .fb-post .post-header .post-time {
+            color: var(--gray-600);
+            font-size: 0.75rem;
+        }
+        .facebook-feed .feed-container .fb-page-embed .fb-post .post-content {
+            color: var(--gray-800);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .facebook-feed .feed-container .fb-page-embed .fb-post .post-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+            color: var(--gray-600);
+            font-size: 0.8rem;
+        }
+        .facebook-feed .feed-container .fb-page-embed .fb-post .post-actions span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .facebook-feed .feed-container .fb-page-embed .view-all {
+            display: block;
+            text-align: center;
+            margin-top: 16px;
+            padding: 10px;
+            background: var(--facebook);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .facebook-feed .feed-container .fb-page-embed .view-all:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(24, 119, 242, 0.3);
         }
 
         /* ===== FAQ ===== */
@@ -1205,11 +1444,24 @@
             font-weight: 500;
             border: 2px dashed var(--gray-400);
             transition: var(--transition);
+            flex-direction: column;
+            gap: 8px;
+            text-align: center;
+            padding: 16px;
         }
         .contact-info .map-placeholder:hover {
             background: var(--accent-light);
             border-color: var(--accent);
             transform: scale(1.02);
+        }
+        .contact-info .map-placeholder .map-link {
+            color: var(--accent);
+            font-weight: 700;
+            text-decoration: underline;
+            transition: var(--transition);
+        }
+        .contact-info .map-placeholder .map-link:hover {
+            color: var(--primary);
         }
 
         /* ===== FOOTER ===== */
@@ -1246,6 +1498,27 @@
         footer a:hover {
             color: white;
             transform: translateX(5px);
+        }
+        footer .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        footer .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        footer .footer-social a:hover {
+            background: var(--accent);
+            transform: translateY(-3px) scale(1.1);
         }
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -1284,21 +1557,13 @@
             color: white;
             animation: float 3s ease-in-out infinite;
         }
-        .floating-actions a:nth-child(1) {
-            animation-delay: 0s;
-        }
-        .floating-actions a:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-        .floating-actions a:hover {
-            transform: scale(1.15);
-        }
-        .floating-actions .phone {
-            background: #2563eb;
-        }
-        .floating-actions .whatsapp {
-            background: #25d366;
-        }
+        .floating-actions a:nth-child(1) { animation-delay: 0s; }
+        .floating-actions a:nth-child(2) { animation-delay: 0.5s; }
+        .floating-actions a:nth-child(3) { animation-delay: 1s; }
+        .floating-actions a:hover { transform: scale(1.15); }
+        .floating-actions .phone { background: #2563eb; }
+        .floating-actions .whatsapp { background: #25d366; }
+        .floating-actions .facebook-fab { background: #1877f2; }
 
         /* ===== BACK TO TOP ===== */
         .back-top {
@@ -1341,6 +1606,14 @@
             }
             footer .grid {
                 grid-template-columns: 1fr 1fr;
+            }
+            .blog-header {
+                flex-direction: column;
+                gap: 16px;
+                align-items: stretch;
+            }
+            .blog-header .share-buttons {
+                justify-content: center;
             }
         }
 
@@ -1397,6 +1670,12 @@
             .about-image {
                 height: 250px;
             }
+            .facebook-feed .feed-container .fb-page-embed {
+                min-width: 100%;
+            }
+            .blog-header .share-buttons {
+                flex-wrap: wrap;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1412,7 +1691,7 @@
     <div class="top-bar">
         <div class="container">
             <span class="hours">🕐 <span>Lun-Ven 8h00-13h00 / 15h30-18h00 | Sam 8h00-13h00</span></span>
-            <span class="emergency">📞 Urgence 24/7 : 66-47-88-90/69-21-96-98 <span>APPEL</span></span>
+            <span class="emergency">📞 Urgence 24/7 : 66-47-88-90 / 69-21-96-98 <span>APPEL</span></span>
         </div>
     </div>
 
@@ -1430,7 +1709,7 @@
                 <a href="#services">Soins</a>
                 <a href="#about">Cabinet</a>
                 <a href="#team">Équipe</a>
-                <a href="#blog">Blog</a>
+                <a href="#blog">Actualités</a>
                 <a href="#contact">Contact</a>
                 <a href="#contact" class="btn-rdv">Prendre RDV</a>
             </div>
@@ -1439,6 +1718,30 @@
             </button>
         </div>
     </nav>
+
+    <!-- ===== ANNONCE DYNAMIQUE ===== -->
+    <section class="orl-announce" id="orlAnnounce">
+        <div class="container">
+            <div class="orl-content">
+                <span class="orl-icon" id="orlIcon">👨‍⚕️</span>
+                <div class="orl-text" id="orlText">
+                    <strong id="orlTitle">📢 Consultation ORL Spéciale !</strong><br>
+                    <span id="orlDescription">Un spécialiste en O.R.L vous reçoit du <strong>21 au 23 Mai 2026</strong> de <strong>15h30 à 18h00</strong></span>
+                    <span style="display:block;font-size:0.85rem;color:#78350f;margin-top:4px;" id="orlDetails">
+                        Maladies de l'oreille, du nez, de la gorge, sinusite...
+                    </span>
+                </div>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+                <span class="orl-date" id="orlDate">📅 21-23 Mai 2026</span>
+                <span class="status-badge active" id="orlStatus">🔴 En cours</span>
+                <a href="#contact" class="orl-more">📍 Voir l'adresse →</a>
+                <button class="share-facebook" onclick="shareToFacebook(document.getElementById('orlTitle').textContent + ' - ' + document.getElementById('orlDescription').textContent)">
+                    📘 Partager
+                </button>
+            </div>
+        </div>
+    </section>
 
     <!-- ===== HERO ===== -->
     <section class="hero" id="home">
@@ -1460,7 +1763,6 @@
                 <div class="hero-image">
                     <img src="logo3.jpeg" alt="Cabinet Bucco-Dentaire MENODJI">
                     
-                    <!-- ===== ICÔNES FLOTTANTES AVEC EFFETS AU SURVOL ===== -->
                     <div class="floating-icon">🦷</div>
                     <div class="floating-icon">⭐</div>
                     <div class="floating-icon">😁</div>
@@ -1468,7 +1770,6 @@
                     <div class="floating-icon">❤️</div>
                     <div class="floating-icon">🏥</div>
                     
-                    <!-- Bulles de fond -->
                     <div class="bubble"></div>
                     <div class="bubble"></div>
                     <div class="bubble"></div>
@@ -1519,6 +1820,16 @@
                         <li>🌿 Matériaux biocompatibles et esthétiques</li>
                     </ul>
                     <p style="margin-top:10px;font-weight:600;color:var(--accent);">👉 Nous prenons en charge votre devis mutuelle.</p>
+                    
+                    <div style="margin-top:24px;">
+                        <p style="font-weight:600;margin-bottom:10px;">📱 Suivez-nous sur les réseaux :</p>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/profile.php?id=61589799500666" target="_blank" class="facebook" aria-label="Facebook">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            </a>
+                            <a href="tel:+23566478890" class="phone-link" aria-label="Téléphone">📞</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="about-image animate-fade-right">
                     <img src="logo3.jpeg" alt="Notre cabinet moderne et accueillant">
@@ -1565,15 +1876,61 @@
         </div>
     </section>
 
-    <!-- ===== BLOG ===== -->
+    <!-- ===== ACTUALITÉS DYNAMIQUES ===== -->
     <section class="blog" id="blog">
         <div class="container">
-            <h2 class="section-title animate-fade-up">Actualités & conseils</h2>
-            <p class="section-sub animate-fade-up delay-2">Retrouvez nos articles pour prendre soin de votre sourire au quotidien.</p>
-            <div class="blog-grid">
-                <div class="blog-card animate-scale delay-1"><div class="img">🪥</div><div class="body"><div class="date">10 avril 2026</div><h4>Comment bien brosser ses dents ?</h4><p>Les bons gestes et les erreurs à éviter pour une hygiène parfaite.</p></div></div>
-                <div class="blog-card animate-scale delay-2"><div class="img">🍬</div><div class="body"><div class="date">3 avril 2026</div><h4>Alimentation et santé dentaire</h4><p>Les aliments qui renforcent l'émail et ceux qui abîment les dents.</p></div></div>
-                <div class="blog-card animate-scale delay-3"><div class="img">😬</div><div class="body"><div class="date">28 mars 2026</div><h4>Orthodontie adulte : mythes et réalités</h4><p>Il n'est jamais trop tard pour aligner ses dents. On vous dit tout.</p></div></div>
+            <div class="blog-header">
+                <h2 class="section-title" style="margin-bottom:0;">📰 Actualités</h2>
+                <div class="share-buttons">
+                    <button class="share-fb" onclick="shareToFacebook('Découvrez les actualités du Cabinet Bucco-Dentaire MENODJI - Soins dentaires de qualité à Moundou !')">
+                        📘 Partager sur Facebook
+                    </button>
+                    <button class="share-wa" onclick="shareToWhatsApp('Découvrez les actualités du Cabinet Bucco-Dentaire MENODJI - Soins dentaires de qualité à Moundou !')">
+                        💬 Partager sur WhatsApp
+                    </button>
+                </div>
+            </div>
+            <p class="section-sub animate-fade-up delay-2">Restez informés des dernières nouvelles du cabinet.</p>
+            <div class="blog-grid" id="newsGrid">
+                <!-- Les actualités seront générées dynamiquement par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FACEBOOK FEED ===== -->
+    <section class="facebook-feed" id="facebookFeed">
+        <div class="container">
+            <h2 class="section-title animate-fade-up">📘 Suivez-nous sur Facebook</h2>
+            <p class="section-sub animate-fade-up delay-2">Retrouvez toutes nos actualités et promotions sur notre page Facebook.</p>
+            <div class="feed-container">
+                <div class="fb-page-embed animate-scale delay-1">
+                    <div class="fb-header">
+                        <span class="fb-logo">📘</span>
+                        <h3>Cabinet Bucco-Dentaire MENODJI</h3>
+                    </div>
+                    
+                    <div id="facebookPosts">
+                        <!-- Les posts Facebook seront générés dynamiquement -->
+                    </div>
+                    
+                    <a href="https://www.facebook.com/profile.php?id=61589799500666" target="_blank" class="view-all">
+                        📘 Voir toutes les actualités sur Facebook
+                    </a>
+                </div>
+                
+                <div class="fb-page-embed animate-scale delay-2" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#1877f2,#0d5b9e);color:white;text-align:center;padding:40px 20px;">
+                    <div style="font-size:4rem;margin-bottom:16px;">📘</div>
+                    <h3 style="color:white;font-size:1.5rem;">Rejoignez-nous sur Facebook</h3>
+                    <p style="color:rgba(255,255,255,0.8);margin:12px 0 24px;max-width:300px;">
+                        Suivez notre page pour être informé de toutes nos actualités, promotions et conseils santé.
+                    </p>
+                    <a href="https://www.facebook.com/profile.php?id=61589799500666" target="_blank" style="background:white;color:#1877f2;padding:12px 30px;border-radius:60px;font-weight:700;transition:var(--transition);display:inline-block;">
+                        📘 Suivre la page
+                    </a>
+                    <div style="margin-top:16px;font-size:0.8rem;color:rgba(255,255,255,0.6);">
+                        ⚡ 124 abonnés • 45 publications
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1609,11 +1966,58 @@
                     <button type="submit" class="btn-submit" style="margin-top:16px;">Envoyer un message ✉️</button>
                 </form>
                 <div class="contact-info animate-fade-right">
-                    <div class="item"><span class="emoji">📍</span><div><strong>Adresse</strong><br>Moundou, Tchad</div></div>
-                    <div class="item"><span class="emoji">📞</span><div><strong>Téléphone</strong><br>66-47-88-90</div></div>
-                    <div class="item"><span class="emoji">✉️</span><div><strong>Email</strong><br>contact@menodji-dental.fr</div></div>
-                    <div class="item"><span class="emoji">🕐</span><div><strong>Horaires</strong><br>Lun-Ven 8h-13h / 15h30-18h<br>Sam 8h-13h</div></div>
-                    <div class="map-placeholder">🗺️ [ Plan d'accès - Google Maps ]</div>
+                    <div class="item">
+                        <span class="emoji">📍</span>
+                        <div>
+                            <strong>Adresse</strong><br>
+                            Non loin de la station Sidigui<br>
+                            En face du bassin de rétention<br>
+                            Allant vers le restaurant Kemdeholo<br>
+                            <span style="color:var(--accent);font-weight:600;">Moundou, Tchad</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <span class="emoji">📞</span>
+                        <div>
+                            <strong>Téléphone</strong><br>
+                            66-47-88-90 / 69-21-96-98
+                        </div>
+                    </div>
+                    <div class="item">
+                        <span class="emoji">✉️</span>
+                        <div>
+                            <strong>Email</strong><br>
+                            contact@menodji-dental.com
+                        </div>
+                    </div>
+                    <div class="item">
+                        <span class="emoji">🕐</span>
+                        <div>
+                            <strong>Horaires</strong><br>
+                            Lun-Ven 8h-13h / 15h30-18h<br>
+                            Sam 8h-13h
+                        </div>
+                    </div>
+                    <div class="map-placeholder">
+                        <div>🗺️</div>
+                        <div>
+                            <strong>Plan d'accès</strong><br>
+                            <span style="font-size:0.85rem;">Non loin de la station Sidigui</span><br>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Moundou+station+Sidigui" 
+                               target="_blank" 
+                               class="map-link">
+                                📍 Voir sur Google Maps
+                            </a>
+                        </div>
+                    </div>
+                    <div style="text-align:center;margin-top:8px;">
+                        <a href="https://www.facebook.com/profile.php?id=61589799500666" 
+                           target="_blank" 
+                           style="display:inline-flex;align-items:center;gap:10px;background:#1877f2;color:white;padding:10px 24px;border-radius:60px;font-weight:600;transition:var(--transition);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            Suivez-nous sur Facebook
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1623,9 +2027,34 @@
     <footer>
         <div class="container">
             <div class="grid">
-                <div class="animate-fade-up"><h4> Cabinet MENODJI </h4><p style="max-width:260px;">Cabinet de chirurgie dentaire et d'esthétique, où vous retrouvez le sourire.</p><div style="display:flex;gap:12px;margin-top:12px;font-size:1.6rem;">📱 👍 🐦</div></div>
-                <div class="animate-fade-up delay-2"><h4>Soins</h4><a href="#services">Implantologie</a><a href="#services">Orthodontie</a><a href="#services">Esthétique</a><a href="#services">Urgences</a></div>
-                <div class="animate-fade-up delay-3"><h4>Cabinet</h4><a href="#about">À propos</a><a href="#team">Équipe</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
+                <div class="animate-fade-up">
+                    <h4> Cabinet MENODJI </h4>
+                    <p style="max-width:260px;">
+                        Cabinet de chirurgie dentaire et d'esthétique dirigé par le Dr MASSEDE ISIDORE.
+                    </p>
+                    <p style="color:var(--accent);font-weight:600;margin-top:8px;">
+                        📍 Non loin de la station Sidigui, Moundou
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/profile.php?id=61589799500666" target="_blank" aria-label="Facebook">📘</a>
+                        <a href="tel:+23566478890" aria-label="Téléphone">📞</a>
+                        <a href="https://wa.me/23566478890" target="_blank" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+                <div class="animate-fade-up delay-2">
+                    <h4>Soins</h4>
+                    <a href="#services">Implantologie</a>
+                    <a href="#services">Orthodontie</a>
+                    <a href="#services">Esthétique</a>
+                    <a href="#services">Urgences</a>
+                </div>
+                <div class="animate-fade-up delay-3">
+                    <h4>Cabinet</h4>
+                    <a href="#about">À propos</a>
+                    <a href="#team">Équipe</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contact">Contact</a>
+                </div>
                 <div class="animate-fade-up delay-4">
                     <h4>Horaires</h4>
                     <div class="footer-hours">
@@ -1635,27 +2064,324 @@
                         <strong>Samedi</strong><br>
                         8h00 – 13h00
                     </div>
+                    <div style="margin-top:12px;">
+                        <a href="https://www.facebook.com/profile.php?id=61589799500666" 
+                           target="_blank" 
+                           style="color:var(--accent);font-weight:600;">
+                            📘 Suivez-nous sur Facebook
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom animate-fade-up delay-5">© 2026 Cabinet MENODJI - Tous droits réservés | <a href="#" style="display:inline;color:var(--accent);">Espace Patient</a></div>
+            <div class="footer-bottom animate-fade-up delay-5">
+                © 2026 Cabinet MENODJI - Tous droits réservés | 
+                <a href="#" style="display:inline;color:var(--accent);">Espace Patient</a>
+            </div>
         </div>
     </footer>
 
     <!-- ===== FLOATING ACTIONS ===== -->
     <div class="floating-actions">
-        <a href="tel:0123456789" class="phone" aria-label="Appeler">📞</a>
-        <a href="https://wa.me/33123456789" class="whatsapp" aria-label="WhatsApp" target="_blank">💬</a>
+        <a href="tel:+23566478890" class="phone" aria-label="Appeler">📞</a>
+        <a href="https://wa.me/23566478890" class="whatsapp" aria-label="WhatsApp" target="_blank">💬</a>
+        <a href="https://www.facebook.com/profile.php?id=61589799500666" class="facebook-fab" aria-label="Facebook" target="_blank">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
     </div>
     <button class="back-top" id="backTop" aria-label="Retour en haut">⬆</button>
 
     <!-- ===== SCRIPTS ===== -->
     <script>
+        // ========================================
+        // 1. GESTION DES ACTUALITÉS DYNAMIQUES
+        // ========================================
+        
+        // Données des actualités (semaine du 21 au 27 Mai 2026)
+        const newsData = [
+            {
+                id: 1,
+                icon: '👨‍⚕️',
+                title: 'Consultation ORL Spéciale',
+                description: 'Un spécialiste en O.R.L vous reçoit du 21 au 23 Mai 2026 de 15h30 à 18h00',
+                details: 'Maladies de l\'oreille, du nez, de la gorge, sinusite...',
+                startDate: new Date(2026, 4, 21), // 21 Mai 2026
+                endDate: new Date(2026, 4, 23),   // 23 Mai 2026
+                status: 'active', // 'active', 'soon', 'passed'
+                emoji: '👨‍⚕️'
+            },
+            {
+                id: 2,
+                icon: '🦷',
+                title: 'Campagne de Détartrage Gratuit',
+                description: 'Profitez d\'un détartrage gratuit pour tout nouveau patient',
+                details: 'Offre valable jusqu\'au 31 Mai 2026. Prenez rendez-vous dès maintenant !',
+                startDate: new Date(2026, 4, 24),
+                endDate: new Date(2026, 4, 31),
+                status: 'active',
+                emoji: '🪥'
+            },
+            {
+                id: 3,
+                icon: '✨',
+                title: 'Nouveau Service : Facettes Céramique',
+                description: 'Nous proposons désormais des facettes dentaires en céramique',
+                details: 'Pour un sourire éclatant et naturel. Offre de lancement -20%',
+                startDate: new Date(2026, 4, 26),
+                endDate: new Date(2026, 5, 15),
+                status: 'soon',
+                emoji: '😁'
+            }
+        ];
+
+        // Fonction pour déterminer le statut d'une actualité
+        function getNewsStatus(startDate, endDate) {
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            
+            const start = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+            const end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
+            
+            if (today < start) {
+                return 'soon';
+            } else if (today >= start && today <= end) {
+                return 'active';
+            } else {
+                return 'passed';
+            }
+        }
+
+        // Fonction pour formater une date en français
+        function formatDate(date) {
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            return date.toLocaleDateString('fr-FR', options);
+        }
+
+        // Fonction pour obtenir le message de statut
+        function getStatusMessage(status) {
+            switch(status) {
+                case 'active':
+                    return '🔴 En cours';
+                case 'soon':
+                    return '🟡 À venir';
+                case 'passed':
+                    return '⚫ Terminé';
+                default:
+                    return '';
+            }
+        }
+
+        // Fonction pour obtenir la classe CSS du statut
+        function getStatusClass(status) {
+            switch(status) {
+                case 'active':
+                    return 'active';
+                case 'soon':
+                    return 'soon';
+                case 'passed':
+                    return 'passed';
+                default:
+                    return '';
+            }
+        }
+
+        // Générer les cartes d'actualités
+        function renderNews() {
+            const grid = document.getElementById('newsGrid');
+            if (!grid) return;
+            
+            grid.innerHTML = '';
+            
+            // Filtrer les actualités de la semaine (7 jours)
+            const now = new Date();
+            const oneWeekAgo = new Date(now);
+            oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+            
+            const weekNews = newsData.filter(news => {
+                const newsDate = new Date(news.startDate);
+                return newsDate >= oneWeekAgo;
+            });
+            
+            // Si pas d'actualités dans la semaine, afficher un message
+            if (weekNews.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column:1/-1;text-align:center;padding:40px;background:white;border-radius:var(--radius);box-shadow:var(--shadow-md);">
+                        <div style="font-size:4rem;margin-bottom:16px;">📭</div>
+                        <h3 style="color:var(--primary);">Aucune actualité cette semaine</h3>
+                        <p style="color:var(--gray-600);">Revenez bientôt pour découvrir nos nouvelles annonces !</p>
+                        <a href="#contact" style="display:inline-block;margin-top:16px;background:var(--accent);color:white;padding:10px 24px;border-radius:60px;font-weight:600;">Nous contacter</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            weekNews.forEach(news => {
+                const status = getNewsStatus(news.startDate, news.endDate);
+                const statusMsg = getStatusMessage(status);
+                const statusClass = getStatusClass(status);
+                
+                const card = document.createElement('div');
+                card.className = 'blog-card animate-scale';
+                card.style.animationDelay = (weekNews.indexOf(news) * 0.2 + 0.1) + 's';
+                
+                // Message si l'actualité est passée
+                let passedMessage = '';
+                if (status === 'passed') {
+                    passedMessage = `
+                        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:12px;margin-top:12px;color:#991b1b;font-size:0.85rem;">
+                            ⚠️ Cette actualité est terminée. Découvrez nos prochaines offres !
+                        </div>
+                    `;
+                }
+                
+                card.innerHTML = `
+                    <div class="img">
+                        ${news.emoji}
+                        <span class="news-badge ${statusClass}">${statusMsg}</span>
+                    </div>
+                    <div class="body">
+                        <div class="date ${status === 'passed' ? 'passed' : ''}">
+                            📅 Du ${formatDate(news.startDate)} au ${formatDate(news.endDate)}
+                        </div>
+                        <h4>${news.title}</h4>
+                        <p>${news.description}</p>
+                        <p style="font-size:0.85rem;color:var(--gray-600);margin-top:6px;">${news.details}</p>
+                        ${passedMessage}
+                        <div class="blog-actions">
+                            <button class="fb-share" onclick="shareToFacebook('${news.title} - ${news.description} - Cabinet MENODJI')">📘</button>
+                            <button class="wa-share" onclick="shareToWhatsApp('${news.title} - ${news.description} - Cabinet MENODJI')">💬</button>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // ========================================
+        // 2. GESTION DE L'ANNONCE ORL (BANDEAU)
+        // ========================================
+        
+        function updateOrlAnnounce() {
+            const orlNews = newsData[0]; // La première actualité est l'ORL
+            const status = getNewsStatus(orlNews.startDate, orlNews.endDate);
+            
+            const announce = document.getElementById('orlAnnounce');
+            const icon = document.getElementById('orlIcon');
+            const title = document.getElementById('orlTitle');
+            const description = document.getElementById('orlDescription');
+            const details = document.getElementById('orlDetails');
+            const dateEl = document.getElementById('orlDate');
+            const statusEl = document.getElementById('orlStatus');
+            
+            // Mettre à jour le contenu
+            icon.textContent = orlNews.emoji;
+            title.textContent = '📢 ' + orlNews.title + ' !';
+            description.innerHTML = orlNews.description.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            details.textContent = orlNews.details;
+            dateEl.textContent = `📅 Du ${formatDate(orlNews.startDate)} au ${formatDate(orlNews.endDate)}`;
+            
+            // Mettre à jour le statut
+            statusEl.textContent = getStatusMessage(status);
+            statusEl.className = 'status-badge ' + getStatusClass(status);
+            
+            // Mettre à jour l'apparence du bandeau
+            announce.className = 'orl-announce';
+            if (status === 'passed') {
+                announce.classList.add('passed');
+            }
+        }
+
+        // ========================================
+        // 3. GESTION DES POSTS FACEBOOK
+        // ========================================
+        
+        function renderFacebookPosts() {
+            const container = document.getElementById('facebookPosts');
+            if (!container) return;
+            
+            const posts = [
+                {
+                    avatar: 'M',
+                    name: 'Cabinet MENODJI',
+                    time: '2h',
+                    content: `🦷 <strong>Consultation ORL Spéciale !</strong><br>
+                              Un spécialiste en O.R.L vous reçoit du 21 au 23 Mai 2026 de 15h30 à 18h00.<br>
+                              Maladies de l'oreille, du nez, de la gorge, sinusite...`,
+                    likes: 24,
+                    comments: 5,
+                    shares: 12
+                },
+                {
+                    avatar: 'M',
+                    name: 'Cabinet MENODJI',
+                    time: '5h',
+                    content: `😁 <strong>Nouveau service !</strong><br>
+                              Nous proposons désormais des facettes dentaires en céramique pour un sourire éclatant. Prenez rendez-vous dès maintenant !`,
+                    likes: 45,
+                    comments: 8,
+                    shares: 23
+                },
+                {
+                    avatar: 'M',
+                    name: 'Cabinet MENODJI',
+                    time: '1j',
+                    content: `📍 <strong>Nous sommes à Moundou !</strong><br>
+                              Non loin de la station Sidigui, en face du bassin de rétention. Venez nous rendre visite pour des soins dentaires de qualité.`,
+                    likes: 67,
+                    comments: 12,
+                    shares: 34
+                }
+            ];
+            
+            container.innerHTML = posts.map(post => `
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="post-avatar">${post.avatar}</div>
+                        <span class="post-name">${post.name}</span>
+                        <span class="post-time">• ${post.time}</span>
+                    </div>
+                    <div class="post-content">${post.content}</div>
+                    <div class="post-actions">
+                        <span>👍 ${post.likes}</span>
+                        <span>💬 ${post.comments}</span>
+                        <span>📤 ${post.shares}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ========================================
+        // 4. FONCTIONS DE PARTAGE
+        // ========================================
+        
+        function shareToFacebook(message) {
+            const url = 'https://www.facebook.com/profile.php?id=61589799500666';
+            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(message)}`;
+            window.open(shareUrl, '_blank', 'width=600,height=400');
+        }
+
+        function shareToWhatsApp(message) {
+            const phone = '23566478890';
+            const shareUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message + ' - Cabinet Bucco-Dentaire MENODJI')}`;
+            window.open(shareUrl, '_blank');
+        }
+
+        // Rendre les fonctions globales
+        window.shareToFacebook = shareToFacebook;
+        window.shareToWhatsApp = shareToWhatsApp;
+
+        // ========================================
+        // 5. NAVIGATION & ANIMATIONS
+        // ========================================
+        
         // Hamburger
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-        });
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => navLinks.classList.remove('open'));
         });
@@ -1679,9 +2405,11 @@
                 backTop.classList.remove('visible');
             }
         });
-        backTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        if (backTop) {
+            backTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
 
         // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(btn => {
@@ -1710,14 +2438,13 @@
             });
         }, observerOptions);
 
-        // Observe all animated elements
         document.querySelectorAll('.animate-fade-up, .animate-fade-left, .animate-fade-right, .animate-scale').forEach(el => {
             el.style.opacity = '0';
             el.style.animationPlayState = 'paused';
             observer.observe(el);
         });
 
-        // Start animations for elements already in view
+        // Démarrer les animations pour les éléments déjà visibles
         setTimeout(() => {
             document.querySelectorAll('.animate-fade-up, .animate-fade-left, .animate-fade-right, .animate-scale').forEach(el => {
                 const rect = el.getBoundingClientRect();
@@ -1727,6 +2454,28 @@
                 }
             });
         }, 100);
+
+        // ========================================
+        // 6. INITIALISATION
+        // ========================================
+        
+        // Générer les actualités
+        renderNews();
+        
+        // Mettre à jour l'annonce ORL
+        updateOrlAnnounce();
+        
+        // Générer les posts Facebook
+        renderFacebookPosts();
+        
+        // Rafraîchir automatiquement toutes les minutes
+        setInterval(() => {
+            updateOrlAnnounce();
+            renderNews();
+        }, 60000);
+        
+        console.log('📅 Actualités dynamiques chargées avec succès !');
+        console.log('📘 Les actualités s\'affichent sur une semaine et changent automatiquement.');
     </script>
 
 </body>
