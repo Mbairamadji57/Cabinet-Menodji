@@ -105,6 +105,68 @@
             50% { transform: translateY(-15px); }
         }
 
+        /* ===== ANIMATIONS ICÔNES NON UNIFORMES ===== */
+
+        /* Icône 1 - Mouvement en 8 avec rotation */
+        @keyframes iconFloat1 {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            20% { transform: translate(25px, -30px) scale(1.1) rotate(12deg); }
+            40% { transform: translate(10px, -50px) scale(0.9) rotate(-8deg); }
+            60% { transform: translate(-20px, -35px) scale(1.15) rotate(15deg); }
+            80% { transform: translate(-10px, -15px) scale(0.95) rotate(-10deg); }
+            100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+        }
+
+        /* Icône 2 - Mouvement en spirale */
+        @keyframes iconFloat2 {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            25% { transform: translate(-30px, -20px) scale(1.2) rotate(-15deg); }
+            50% { transform: translate(-15px, -45px) scale(0.85) rotate(10deg); }
+            75% { transform: translate(20px, -30px) scale(1.1) rotate(-5deg); }
+            100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+        }
+
+        /* Icône 3 - Mouvement en vague sinusoïdale */
+        @keyframes iconFloat3 {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            15% { transform: translate(35px, -15px) scale(1.15) rotate(8deg); }
+            30% { transform: translate(40px, -35px) scale(0.9) rotate(-12deg); }
+            50% { transform: translate(20px, -50px) scale(1.05) rotate(5deg); }
+            70% { transform: translate(-15px, -40px) scale(0.88) rotate(-18deg); }
+            85% { transform: translate(-30px, -20px) scale(1.12) rotate(10deg); }
+            100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+        }
+
+        /* Icône 4 - Mouvement circulaire elliptique */
+        @keyframes iconFloat4 {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            25% { transform: translate(-20px, -25px) scale(0.9) rotate(-20deg); }
+            50% { transform: translate(25px, -35px) scale(1.2) rotate(15deg); }
+            75% { transform: translate(10px, -15px) scale(0.85) rotate(-10deg); }
+            100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+        }
+
+        /* Icône 5 - Mouvement aléatoire avec rebond */
+        @keyframes iconFloat5 {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            10% { transform: translate(15px, -10px) scale(1.1) rotate(5deg); }
+            30% { transform: translate(-25px, -30px) scale(0.8) rotate(-25deg); }
+            50% { transform: translate(30px, -45px) scale(1.2) rotate(20deg); }
+            70% { transform: translate(-15px, -25px) scale(0.9) rotate(-15deg); }
+            90% { transform: translate(10px, -15px) scale(1.05) rotate(8deg); }
+            100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+        }
+
+        /* Icône 6 - Mouvement en pendule */
+        @keyframes iconFloat6 {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            20% { transform: translate(20px, -20px) scale(0.85) rotate(-5deg); }
+            40% { transform: translate(-10px, -40px) scale(1.15) rotate(12deg); }
+            60% { transform: translate(30px, -25px) scale(0.9) rotate(-8deg); }
+            80% { transform: translate(-20px, -35px) scale(1.1) rotate(15deg); }
+            100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+        }
+
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -470,7 +532,7 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* ===== HERO IMAGE ===== */
+        /* ===== HERO IMAGE AVEC ICÔNES FLOTTANTES ===== */
         .hero-image {
             border-radius: var(--radius);
             height: 450px;
@@ -496,19 +558,149 @@
             transform: scale(1.05);
         }
 
+        /* Icônes flottantes - Sans fond blanc avec effets au survol */
+        .floating-icon {
+            position: absolute;
+            font-size: 3rem;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: auto;
+            height: auto;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: none;
+            z-index: 2;
+            will-change: transform;
+            filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.12));
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        /* Effet au survol */
+        .floating-icon:hover {
+            transform: scale(1.6) rotate(20deg) !important;
+            filter: drop-shadow(0 12px 40px rgba(43, 156, 156, 0.5)) drop-shadow(0 0 60px rgba(43, 156, 156, 0.2));
+            text-shadow: 0 0 30px rgba(43, 156, 156, 0.3);
+            z-index: 10;
+            animation-play-state: paused !important;
+        }
+
+        /* Animation de pulsation au survol */
+        .floating-icon:hover::after {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(43, 156, 156, 0.15), transparent 70%);
+            animation: pulseRing 1s ease-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulseRing {
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Positions et animations uniques pour chaque icône */
+        .floating-icon:nth-child(2) {
+            top: 5%;
+            right: 3%;
+            animation: iconFloat1 7s ease-in-out infinite;
+            font-size: 3.2rem;
+        }
+        .floating-icon:nth-child(3) {
+            bottom: 10%;
+            left: 2%;
+            animation: iconFloat2 8.5s ease-in-out infinite;
+            font-size: 2.8rem;
+        }
+        .floating-icon:nth-child(4) {
+            top: 12%;
+            left: 5%;
+            animation: iconFloat3 9s ease-in-out infinite;
+            font-size: 3.5rem;
+        }
+        .floating-icon:nth-child(5) {
+            bottom: 22%;
+            right: 4%;
+            animation: iconFloat4 6.5s ease-in-out infinite;
+            font-size: 2.6rem;
+        }
+        .floating-icon:nth-child(6) {
+            top: 48%;
+            left: 1%;
+            animation: iconFloat5 10s ease-in-out infinite;
+            font-size: 3rem;
+        }
+        .floating-icon:nth-child(7) {
+            top: 42%;
+            right: 1%;
+            animation: iconFloat6 7.5s ease-in-out infinite;
+            font-size: 2.9rem;
+        }
+
+        /* Bulles de fond */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(43, 156, 156, 0.08), rgba(43, 156, 156, 0.02));
+            pointer-events: none;
+            z-index: 0;
+        }
+        .bubble:nth-child(8) {
+            width: 120px;
+            height: 120px;
+            bottom: 10%;
+            right: 15%;
+            animation: float 8s ease-in-out infinite;
+        }
+        .bubble:nth-child(9) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            right: 30%;
+            animation: float 6s ease-in-out infinite 1s;
+        }
+        .bubble:nth-child(10) {
+            width: 150px;
+            height: 150px;
+            bottom: 5%;
+            left: 20%;
+            animation: float 10s ease-in-out infinite 0.5s;
+        }
+
         @media (max-width: 992px) {
             .hero-image { height: 380px; }
             .hero-image img { object-position: center 35%; }
+            .floating-icon { font-size: 2.5rem !important; }
         }
 
         @media (max-width: 768px) {
             .hero-image { height: 300px; }
             .hero-image img { object-position: center 30%; }
+            .floating-icon { font-size: 2rem !important; }
+            .floating-icon:nth-child(4) { display: none; }
+            .floating-icon:nth-child(6) { display: none; }
+            .floating-icon:nth-child(7) { display: none; }
         }
 
         @media (max-width: 480px) {
             .hero-image { height: 240px; }
             .hero-image img { object-position: center 25%; }
+            .floating-icon { font-size: 1.6rem !important; }
+            .floating-icon:nth-child(3) { display: none; }
+            .floating-icon:nth-child(5) { display: none; }
         }
 
         /* ===== STATS ===== */
@@ -1267,6 +1459,19 @@
                 </div>
                 <div class="hero-image">
                     <img src="logo3.jpeg" alt="Cabinet Bucco-Dentaire MENODJI">
+                    
+                    <!-- ===== ICÔNES FLOTTANTES AVEC EFFETS AU SURVOL ===== -->
+                    <div class="floating-icon">🦷</div>
+                    <div class="floating-icon">⭐</div>
+                    <div class="floating-icon">😁</div>
+                    <div class="floating-icon">✨</div>
+                    <div class="floating-icon">❤️</div>
+                    <div class="floating-icon">🏥</div>
+                    
+                    <!-- Bulles de fond -->
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
                 </div>
             </div>
         </div>
@@ -1316,7 +1521,7 @@
                     <p style="margin-top:10px;font-weight:600;color:var(--accent);">👉 Nous prenons en charge votre devis mutuelle.</p>
                 </div>
                 <div class="about-image animate-fade-right">
-                    <img src="cabinet-interieur.jpg" alt="Notre cabinet moderne et accueillant">
+                    <img src="logo3.jpeg" alt="Notre cabinet moderne et accueillant">
                 </div>
             </div>
         </div>
