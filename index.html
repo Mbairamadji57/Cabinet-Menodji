@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Cabinet BUCCO-Dentaire MENODJI</title>
-    <meta name="description" content="Site officiel du Cabinet Bucco-Dentaire Menodji à Moundou, soins dentaires et bucco-dentaires.">
-    <meta name="keywords" content="dentiste Moundou, soins dentaires, Cabinet Menodji, bucco-dentaire">
+    <meta name="description" content="Site officiel du Cabinet Bucco-Dentaire Menodji à Moundou, soins dentaires et bucco-dentaires."/>
+    <meta name="keywords" content="dentiste Moundou, soins dentaires, Cabinet Menodji, bucco-dentaire"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -84,70 +84,6 @@
             50% { transform: translateY(-15px); }
         }
 
-        @keyframes iconFloat1 {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            20% { transform: translate(25px, -30px) scale(1.1) rotate(12deg); }
-            40% { transform: translate(10px, -50px) scale(0.9) rotate(-8deg); }
-            60% { transform: translate(-20px, -35px) scale(1.15) rotate(15deg); }
-            80% { transform: translate(-10px, -15px) scale(0.95) rotate(-10deg); }
-            100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-        }
-
-        @keyframes iconFloat2 {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            25% { transform: translate(-30px, -20px) scale(1.2) rotate(-15deg); }
-            50% { transform: translate(-15px, -45px) scale(0.85) rotate(10deg); }
-            75% { transform: translate(20px, -30px) scale(1.1) rotate(-5deg); }
-            100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-        }
-
-        @keyframes iconFloat3 {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            15% { transform: translate(35px, -15px) scale(1.15) rotate(8deg); }
-            30% { transform: translate(40px, -35px) scale(0.9) rotate(-12deg); }
-            50% { transform: translate(20px, -50px) scale(1.05) rotate(5deg); }
-            70% { transform: translate(-15px, -40px) scale(0.88) rotate(-18deg); }
-            85% { transform: translate(-30px, -20px) scale(1.12) rotate(10deg); }
-            100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-        }
-
-        @keyframes iconFloat4 {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            25% { transform: translate(-20px, -25px) scale(0.9) rotate(-20deg); }
-            50% { transform: translate(25px, -35px) scale(1.2) rotate(15deg); }
-            75% { transform: translate(10px, -15px) scale(0.85) rotate(-10deg); }
-            100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-        }
-
-        @keyframes iconFloat5 {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            10% { transform: translate(15px, -10px) scale(1.1) rotate(5deg); }
-            30% { transform: translate(-25px, -30px) scale(0.8) rotate(-25deg); }
-            50% { transform: translate(30px, -45px) scale(1.2) rotate(20deg); }
-            70% { transform: translate(-15px, -25px) scale(0.9) rotate(-15deg); }
-            90% { transform: translate(10px, -15px) scale(1.05) rotate(8deg); }
-            100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-        }
-
-        @keyframes iconFloat6 {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            20% { transform: translate(20px, -20px) scale(0.85) rotate(-5deg); }
-            40% { transform: translate(-10px, -40px) scale(1.15) rotate(12deg); }
-            60% { transform: translate(30px, -25px) scale(0.9) rotate(-8deg); }
-            80% { transform: translate(-20px, -35px) scale(1.1) rotate(15deg); }
-            100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-        }
-
-        @keyframes pulse-badge {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); background: #b91c1c; }
-        }
-
-        @keyframes pulseRing {
-            0% { transform: scale(0.5); opacity: 1; }
-            100% { transform: scale(1.5); opacity: 0; }
-        }
-
         @keyframes slideInDown {
             from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -158,12 +94,29 @@
             50% { opacity: 0.3; }
         }
 
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideOutLeft {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(-50px); }
+        }
+
         /* Classes d'animation */
         .animate-fade-up { opacity: 0; animation: fadeInUp 0.8s ease forwards; }
         .animate-fade-left { opacity: 0; animation: fadeInLeft 0.8s ease forwards; }
         .animate-fade-right { opacity: 0; animation: fadeInRight 0.8s ease forwards; }
         .animate-scale { opacity: 0; animation: scaleIn 0.8s ease forwards; }
         .animate-float { animation: float 4s ease-in-out infinite; }
+        .animate-pulse { animation: pulse 2s ease-in-out infinite; }
 
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
@@ -217,7 +170,7 @@
             padding: 2px 10px;
             border-radius: 40px;
             margin-left: 6px;
-            animation: pulse-badge 1.5s infinite;
+            animation: pulse 1.5s infinite;
         }
 
         /* ===== NAVIGATION ===== */
@@ -261,6 +214,7 @@
             width: auto;
             max-height: 60px;
             object-fit: contain;
+            /* box-shadow supprimé */
         }
         .logo-text {
             font-size: 1.6rem;
@@ -348,6 +302,61 @@
             background: var(--primary);
             border-radius: 4px;
             transition: var(--transition);
+        }
+
+        /* ===== NOTIFICATION TOAST ===== */
+        .toast-notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            z-index: 9999;
+            transform: translateX(120%);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-width: 400px;
+            border-left: 4px solid var(--accent);
+            cursor: pointer;
+        }
+        .toast-notification.show {
+            transform: translateX(0);
+        }
+        .toast-notification .toast-title {
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .toast-notification .toast-title .badge-new {
+            background: #dc2626;
+            padding: 2px 10px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            animation: pulse 1.5s infinite;
+        }
+        .toast-notification .toast-body {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+        .toast-notification .toast-close {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .toast-notification .toast-close:hover {
+            color: white;
+            transform: scale(1.2);
         }
 
         /* ===== BUTTONS ===== */
@@ -514,22 +523,13 @@
             z-index: 10;
             animation-play-state: paused !important;
         }
-        .floating-icon:hover::after {
-            content: '';
-            position: absolute;
-            inset: -20px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(43, 156, 156, 0.15), transparent 70%);
-            animation: pulseRing 1s ease-out infinite;
-            z-index: -1;
-        }
 
-        .floating-icon:nth-child(2) { top: 5%; right: 3%; animation: iconFloat1 7s ease-in-out infinite; font-size: 3.2rem; }
-        .floating-icon:nth-child(3) { bottom: 10%; left: 2%; animation: iconFloat2 8.5s ease-in-out infinite; font-size: 2.8rem; }
-        .floating-icon:nth-child(4) { top: 12%; left: 5%; animation: iconFloat3 9s ease-in-out infinite; font-size: 3.5rem; }
-        .floating-icon:nth-child(5) { bottom: 22%; right: 4%; animation: iconFloat4 6.5s ease-in-out infinite; font-size: 2.6rem; }
-        .floating-icon:nth-child(6) { top: 48%; left: 1%; animation: iconFloat5 10s ease-in-out infinite; font-size: 3rem; }
-        .floating-icon:nth-child(7) { top: 42%; right: 1%; animation: iconFloat6 7.5s ease-in-out infinite; font-size: 2.9rem; }
+        .floating-icon:nth-child(2) { top: 5%; right: 3%; animation: float 7s ease-in-out infinite; font-size: 3.2rem; }
+        .floating-icon:nth-child(3) { bottom: 10%; left: 2%; animation: float 8.5s ease-in-out infinite; font-size: 2.8rem; }
+        .floating-icon:nth-child(4) { top: 12%; left: 5%; animation: float 9s ease-in-out infinite; font-size: 3.5rem; }
+        .floating-icon:nth-child(5) { bottom: 22%; right: 4%; animation: float 6.5s ease-in-out infinite; font-size: 2.6rem; }
+        .floating-icon:nth-child(6) { top: 48%; left: 1%; animation: float 10s ease-in-out infinite; font-size: 3rem; }
+        .floating-icon:nth-child(7) { top: 42%; right: 1%; animation: float 7.5s ease-in-out infinite; font-size: 2.9rem; }
 
         .bubble {
             position: absolute;
@@ -571,6 +571,7 @@
             padding: 20px 0;
             border-bottom: 4px solid #f59e0b;
             position: relative;
+            top: 30px;
             overflow: hidden;
             transition: all 0.5s ease;
         }
@@ -633,7 +634,7 @@
             border-radius: 60px;
             font-weight: 700;
             font-size: 0.9rem;
-            animation: pulse-badge 2s infinite;
+            animation: pulse 2s infinite;
             display: inline-block;
         }
         .orl-announce.passed .orl-date {
@@ -1160,7 +1161,7 @@
             border-radius: 30px;
             font-size: 0.7rem;
             font-weight: 700;
-            animation: pulse-badge 2s infinite;
+            animation: pulse 2s infinite;
         }
         .blog-card .img .news-badge.soon {
             background: #f59e0b;
@@ -1168,6 +1169,10 @@
         .blog-card .img .news-badge.passed {
             background: #6b7280;
             animation: none;
+        }
+        .blog-card .img .news-badge.new {
+            background: #dc2626;
+            animation: pulse 1s infinite;
         }
         .blog-card:hover .img {
             background: var(--accent-light);
@@ -1781,6 +1786,18 @@
         </div>
     </nav>
 
+    <!-- ===== TOAST NOTIFICATION ===== -->
+    <div class="toast-notification" id="toastNotification">
+        <button class="toast-close" onclick="closeToast()">✕</button>
+        <div class="toast-title">
+            🎉 Nouvelle actualité !
+            <span class="badge-new">NOUVEAU</span>
+        </div>
+        <div class="toast-body" id="toastBody">
+            Une nouvelle actualité vient d'être publiée.
+        </div>
+    </div>
+
     <!-- ===== ANNONCE DYNAMIQUE ===== -->
     <section class="orl-announce" id="orlAnnounce">
         <div class="container">
@@ -1798,7 +1815,7 @@
                 <span class="orl-date" id="orlDate">📅 21-23 Mai 2026</span>
                 <span class="status-badge active" id="orlStatus">🔴 En cours</span>
                 <a href="#contact" class="orl-more">📍 Voir l'adresse →</a>
-                <button class="share-facebook" onclick="shareToFacebook(document.getElementById('orlTitle').textContent + ' - ' + document.getElementById('orlDescription').textContent)">
+                <button class="share-facebook" onclick="shareToFacebook()">
                     📘 Partager
                 </button>
             </div>
@@ -1963,7 +1980,7 @@
             <div class="blog-header">
                 <h2 class="section-title" style="margin-bottom:0;">📰 Actualités</h2>
                 <div class="share-buttons">
-                    <button class="share-fb" onclick="shareToFacebook('Découvrez les actualités du Cabinet Bucco-Dentaire MENODJI - Soins dentaires de qualité à Moundou !')">
+                    <button class="share-fb" onclick="shareToFacebook()">
                         📘 Partager sur Facebook
                     </button>
                     <button class="share-wa" onclick="shareToWhatsApp('Découvrez les actualités du Cabinet Bucco-Dentaire MENODJI - Soins dentaires de qualité à Moundou !')">
@@ -2241,6 +2258,10 @@
             }
         ];
 
+        // Variable pour suivre les actualités déjà affichées
+        let displayedNewsIds = [];
+        let lastNewsCount = 0;
+
         // Fonction pour déterminer le statut d'une actualité
         function getNewsStatus(startDate, endDate) {
             const now = new Date();
@@ -2292,12 +2313,33 @@
             }
         }
 
+        // Afficher une notification toast
+        function showToast(message) {
+            const toast = document.getElementById('toastNotification');
+            const toastBody = document.getElementById('toastBody');
+            toastBody.textContent = message;
+            toast.classList.add('show');
+            
+            // Auto-fermeture après 6 secondes
+            clearTimeout(window.toastTimeout);
+            window.toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 6000);
+        }
+
+        // Fermer la notification
+        function closeToast() {
+            const toast = document.getElementById('toastNotification');
+            toast.classList.remove('show');
+        }
+
+        // Exposer closeToast globalement
+        window.closeToast = closeToast;
+
         // Générer les cartes d'actualités
         function renderNews() {
             const grid = document.getElementById('newsGrid');
             if (!grid) return;
-            
-            grid.innerHTML = '';
             
             // Filtrer les actualités des 30 derniers jours
             const now = new Date();
@@ -2311,19 +2353,45 @@
             
             // Si moins de 5 actualités, prendre les plus récentes
             if (monthNews.length < 5) {
-                // Prendre les plus récentes parmi toutes les actualités
                 const sorted = [...newsData].sort((a, b) => b.startDate - a.startDate);
                 monthNews = sorted.slice(0, 5);
             }
             
-            monthNews.forEach(news => {
+            // Trier par date de début (plus récent en premier)
+            monthNews.sort((a, b) => b.startDate - a.startDate);
+            
+            // Vérifier si de nouvelles actualités sont apparues
+            const currentNewsIds = monthNews.map(n => n.id);
+            const newNews = currentNewsIds.filter(id => !displayedNewsIds.includes(id));
+            
+            if (newNews.length > 0 && displayedNewsIds.length > 0) {
+                // Afficher une notification pour les nouvelles actualités
+                const latestNews = monthNews.find(n => n.id === newNews[0]);
+                if (latestNews) {
+                    showToast(`📢 ${latestNews.title} - ${latestNews.description}`);
+                }
+            }
+            
+            // Mettre à jour la liste des actualités affichées
+            displayedNewsIds = currentNewsIds;
+            
+            grid.innerHTML = '';
+            
+            monthNews.forEach((news, index) => {
                 const status = getNewsStatus(news.startDate, news.endDate);
                 const statusMsg = getStatusMessage(status);
                 const statusClass = getStatusClass(status);
+                const isNew = index === 0 && displayedNewsIds.length > 0;
                 
                 const card = document.createElement('div');
                 card.className = 'blog-card animate-scale';
-                card.style.animationDelay = (monthNews.indexOf(news) * 0.1 + 0.1) + 's';
+                card.style.animationDelay = (index * 0.1 + 0.1) + 's';
+                card.dataset.newsId = news.id;
+                
+                // Animation d'entrée pour les nouvelles actualités
+                if (isNew && displayedNewsIds.length > 1) {
+                    card.style.animation = 'slideInRight 0.6s ease forwards';
+                }
                 
                 // Message si l'actualité est passée
                 let passedMessage = '';
@@ -2335,10 +2403,12 @@
                     `;
                 }
                 
+                const badgeClass = isNew && status !== 'passed' ? 'new' : statusClass;
+                
                 card.innerHTML = `
                     <div class="img">
                         ${news.emoji}
-                        <span class="news-badge ${statusClass}">${statusMsg}</span>
+                        <span class="news-badge ${badgeClass}">${isNew && status !== 'passed' ? '🆕 NOUVEAU' : statusMsg}</span>
                     </div>
                     <div class="body">
                         <div class="date ${status === 'passed' ? 'passed' : ''}">
@@ -2349,7 +2419,7 @@
                         <p style="font-size:0.85rem;color:var(--gray-600);margin-top:6px;">${news.details}</p>
                         ${passedMessage}
                         <div class="blog-actions">
-                            <button class="fb-share" onclick="shareToFacebook('${news.title} - ${news.description} - Cabinet MENODJI')">📘</button>
+                            <button class="fb-share" onclick="shareToFacebook()">📘</button>
                             <button class="wa-share" onclick="shareToWhatsApp('${news.title} - ${news.description} - Cabinet MENODJI')">💬</button>
                         </div>
                     </div>
@@ -2357,6 +2427,8 @@
                 
                 grid.appendChild(card);
             });
+            
+            lastNewsCount = monthNews.length;
         }
 
         // ========================================
@@ -2450,13 +2522,23 @@
         }
 
         // ========================================
-        // 4. FONCTIONS DE PARTAGE
+        // 4. FONCTIONS DE PARTAGE DIRECT VERS FACEBOOK
         // ========================================
         
-        function shareToFacebook(message) {
-            const url = 'https://www.facebook.com/profile.php?id=61589799500666';
-            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(message)}`;
-            window.open(shareUrl, '_blank', 'width=600,height=400');
+        // URL de la page Facebook du cabinet
+        const FACEBOOK_PAGE_URL = 'https://www.facebook.com/profile.php?id=61589799500666';
+        
+        function shareToFacebook() {
+            const shareMessage = encodeURIComponent(
+                '🦷 Cabinet Bucco-Dentaire MENODJI - Soins dentaires de qualité à Moundou !\n' +
+                '📍 Non loin de la station Sidigui, en face du bassin de rétention\n' +
+                '📞 66-47-88-90 / 69-21-96-98\n' +
+                '🔗 ' + FACEBOOK_PAGE_URL
+            );
+            
+            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(FACEBOOK_PAGE_URL)}&quote=${shareMessage}`;
+            
+            window.open(shareUrl, '_blank', 'width=600,height=500');
         }
 
         function shareToWhatsApp(message) {
@@ -2465,6 +2547,7 @@
             window.open(shareUrl, '_blank');
         }
 
+        // Exposer les fonctions globalement pour les appels HTML
         window.shareToFacebook = shareToFacebook;
         window.shareToWhatsApp = shareToWhatsApp;
 
@@ -2548,20 +2631,57 @@
         }, 100);
 
         // ========================================
-        // 6. INITIALISATION
+        // 6. SIMULATION D'ARRIVÉE DE NOUVELLES ACTUALITÉS
+        // ========================================
+        
+        // Fonction pour simuler l'arrivée d'une nouvelle actualité (pour la démo)
+        function simulateNewNews() {
+            const newNews = {
+                id: Date.now(),
+                icon: '🎯',
+                title: 'Nouvelle Offre Découverte',
+                description: 'Profitez de -30% sur votre première consultation dentaire',
+                details: 'Offre valable pour tout nouveau patient jusqu\'au 30 Juin 2026',
+                startDate: new Date(),
+                endDate: new Date(2026, 5, 30),
+                emoji: '🎯'
+            };
+            
+            // Ajouter la nouvelle actualité
+            newsData.unshift(newNews);
+            
+            // Re-rendre les actualités
+            renderNews();
+            
+            // Mettre à jour l'annonce
+            updateOrlAnnounce();
+            
+            console.log('🆕 Nouvelle actualité simulée : ' + newNews.title);
+        }
+
+        // ========================================
+        // 7. INITIALISATION
         // ========================================
         
         renderNews();
         updateOrlAnnounce();
         renderFacebookPosts();
         
+        // Mettre à jour toutes les minutes
         setInterval(() => {
             updateOrlAnnounce();
             renderNews();
         }, 60000);
         
+        // Simuler l'arrivée d'une nouvelle actualité après 30 secondes (pour la démo)
+        // Décommentez la ligne ci-dessous pour tester la notification
+        // setTimeout(simulateNewNews, 30000);
+        
         console.log('📅 Actualités dynamiques chargées avec succès !');
         console.log('📘 ' + newsData.length + ' actualités disponibles sur 1 mois.');
+        console.log('📘 Partage Facebook direct activé !');
+        console.log('🔄 Les actualités se mettent à jour automatiquement toutes les minutes.');
+        console.log('🔔 Les nouvelles actualités remplacent automatiquement les anciennes.');
     </script>
 
 </body>
