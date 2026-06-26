@@ -934,50 +934,83 @@
         }
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
             gap: 30px;
+            max-width: 400px;
+            margin: 0 auto;
         }
-        .team-card {
+        .team-grid .team-card {
             background: white;
             border-radius: var(--radius);
-            padding: 30px;
+            padding: 40px 30px;
             text-align: center;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
             transition: var(--transition);
             cursor: default;
+            border: 2px solid var(--accent);
+            position: relative;
         }
-        .team-card:hover {
+        .team-grid .team-card::before {
+            content: '👑';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 2.5rem;
+            background: white;
+            border-radius: 50%;
+            padding: 8px;
+            box-shadow: var(--shadow-md);
+            animation: float 3s ease-in-out infinite;
+        }
+        .team-grid .team-card:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
         }
-        .team-card .avatar {
-            width: 120px;
-            height: 120px;
+        .team-grid .team-card .avatar {
+            width: 140px;
+            height: 140px;
             background: var(--gray-200);
             border-radius: 50%;
             margin: 0 auto 16px;
+            overflow: hidden;
+            border: 5px solid var(--accent);
+            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3.5rem;
-            border: 4px solid var(--accent);
-            transition: var(--transition);
         }
-        .team-card:hover .avatar {
+        .team-grid .team-card:hover .avatar {
             border-color: var(--primary);
             transform: scale(1.05) rotate(5deg);
         }
-        .team-card h3 {
+        .team-grid .team-card .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .team-grid .team-card h3 {
             color: var(--primary);
+            font-size: 1.8rem;
             transition: var(--transition);
         }
-        .team-card:hover h3 {
+        .team-grid .team-card:hover h3 {
             color: var(--accent);
         }
-        .team-card .specialty {
+        .team-grid .team-card .specialty {
             color: var(--accent);
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
+        }
+        .team-grid .team-card .badge-expert {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 8px;
         }
 
         /* ===== TESTIMONIALS ===== */
@@ -1023,6 +1056,16 @@
         .testi-card .date {
             color: var(--gray-600);
             font-size: 0.8rem;
+        }
+        .testi-card .fb-source {
+            display: inline-block;
+            background: var(--facebook);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 6px;
         }
 
         /* ===== ACTUALITÉS DYNAMIQUES ===== */
@@ -1601,7 +1644,7 @@
             .hero .grid, .about-grid, .contact-grid {
                 grid-template-columns: 1fr;
             }
-            .services-grid, .team-grid, .testi-grid, .blog-grid {
+            .services-grid, .testi-grid, .blog-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             footer .grid {
@@ -1643,7 +1686,7 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
             }
-            .services-grid, .team-grid, .testi-grid, .blog-grid {
+            .services-grid, .testi-grid, .blog-grid {
                 grid-template-columns: 1fr;
             }
             .contact-grid { grid-template-columns: 1fr; }
@@ -1676,11 +1719,21 @@
             .blog-header .share-buttons {
                 flex-wrap: wrap;
             }
+            .team-grid {
+                max-width: 300px;
+            }
         }
 
         @media (max-width: 480px) {
             .about-image {
                 height: 200px;
+            }
+            .team-grid .team-card .avatar {
+                width: 100px;
+                height: 100px;
+            }
+            .team-grid .team-card h3 {
+                font-size: 1.4rem;
             }
         }
     </style>
@@ -1749,7 +1802,7 @@
             <div class="grid">
                 <div class="hero-content">
                     <h1 class="animate-fade-left">Votre sourire, <span>notre excellence</span></h1>
-                    <p class="animate-fade-left delay-2">Des soins de pointe dans une ambiance familiale. Le Dr MASSEDE ISIDOIRE et son équipe vous accueillent avec empathie et rigueur.</p>
+                    <p class="animate-fade-left delay-2">Des soins de pointe dans une ambiance familiale. Le Dr MASSEDE ISIDORE et son équipe vous accueillent avec empathie et rigueur.</p>
                     <div class="animate-fade-left delay-3">
                         <a href="#services" class="btn-cta" style="background:#16a34a;">Voir nos services</a>
                     </div>
@@ -1785,7 +1838,7 @@
                 <div class="stat animate-scale delay-1"><h3>1<span>+</span></h3><p>Année d'expertise</p></div>
                 <div class="stat animate-scale delay-2"><h3>200<span>+</span></h3><p>Patients accompagnés</p></div>
                 <div class="stat animate-scale delay-3"><h3>98<span>%</span></h3><p>Satisfaction client</p></div>
-                <div class="stat animate-scale delay-4"><h3>02</h3><p>Chirurgiens dédiés</p></div>
+                <div class="stat animate-scale delay-4"><h3>01</h3><p>Chirurgien dédié</p></div>
             </div>
         </div>
     </section>
@@ -1812,7 +1865,7 @@
             <div class="about-grid">
                 <div class="about-text animate-fade-left">
                     <h2>Un cabinet d'exception</h2>
-                    <p>Fondé par le Dr. MASSEDE ISIDOIRE, notre cabinet allie une technologie de pointe à une approche profondément humaine. Chaque traitement est personnalisé.</p>
+                    <p>Fondé par le Dr. MASSEDE ISIDORE, notre cabinet allie une technologie de pointe à une approche profondément humaine. Chaque traitement est personnalisé.</p>
                     <ul>
                         <li>🧬 Diagnostique numérique (radio 3D, scanner intra-oral)</li>
                         <li>🖨️ Impression 3D pour prothèses et guides chirurgicaux</li>
@@ -1842,22 +1895,15 @@
     <section class="team" id="team">
         <div class="container">
             <h2 class="section-title animate-fade-up">Notre équipe</h2>
-            <p class="section-sub animate-fade-up delay-2">Des experts passionnés à votre écoute.</p>
+            <p class="section-sub animate-fade-up delay-2">Un expert passionné à votre écoute.</p>
             <div class="team-grid">
                 <div class="team-card animate-scale delay-1">
-                    <div class="avatar">👨‍⚕️</div>
+                    <div class="avatar">
+                        <img src="logo3.jpeg" alt="Dr. MASSEDE ISIDORE">
+                    </div>
                     <h3>Dr. MASSEDE ISIDORE</h3>
                     <div class="specialty">Chirurgien-dentiste, Implantologie</div>
-                </div>
-                <div class="team-card animate-scale delay-2">
-                    <div class="avatar">👨‍⚕️</div>
-                    <h3>Dr. Jean LEROY</h3>
-                    <div class="specialty">Médecin généraliste</div>
-                </div>
-                <div class="team-card animate-scale delay-3">
-                    <div class="avatar">👩‍⚕️</div>
-                    <h3>Dr. Sophie MARTIN</h3>
-                    <div class="specialty">Orthodontiste</div>
+                    <span class="badge-expert">⭐ Expert en Implantologie</span>
                 </div>
             </div>
         </div>
@@ -1867,11 +1913,29 @@
     <section class="testimonials" id="testimonials">
         <div class="container">
             <h2 class="section-title animate-fade-up">Ils nous font confiance</h2>
-            <p class="section-sub animate-fade-up delay-2">Des retours sincères de nos patients.</p>
+            <p class="section-sub animate-fade-up delay-2">Des retours sincères de nos patients sur Facebook.</p>
             <div class="testi-grid">
-                <div class="testi-card animate-scale delay-1"><div class="stars">★★★★★</div><blockquote>“ Un accueil chaleureux, des soins sans douleur. Le Dr MASSEDE ISIDORE est un artiste. ”</blockquote><div class="author">— Claire D.</div><div class="date">Mars 2026</div></div>
-                <div class="testi-card animate-scale delay-2"><div class="stars">★★★★★</div><blockquote>“ Mon fils de 8 ans adore venir ici ! L'équipe est géniale avec les enfants. ”</blockquote><div class="author">— Thomas R.</div><div class="date">Février 2026</div></div>
-                <div class="testi-card animate-scale delay-3"><div class="stars">★★★★★</div><blockquote>“ Résultat bluffant sur mes facettes. Je recommande les yeux fermés. ”</blockquote><div class="author">— Emilie L.</div><div class="date">Janvier 2026</div></div>
+                <div class="testi-card animate-scale delay-1">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>“ Le meilleur cabinet de la place. L'accueil est chaleureux et le docteur est très professionnel. Ma fille avait très peur des soins dentaires, elle en sort avec un sourire. Merci docteur ! ”</blockquote>
+                    <div class="author">— Sophie K.</div>
+                    <div class="date">23 Mai 2026</div>
+                    <span class="fb-source">📘 Source : Facebook</span>
+                </div>
+                <div class="testi-card animate-scale delay-2">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>“ Je suis allée pour une consultation ORL et j'ai été très satisfaite du service. Le docteur a pris le temps de m'écouter et de m'expliquer mon problème. Je recommande vivement ! ”</blockquote>
+                    <div class="author">— Marie L.</div>
+                    <div class="date">22 Mai 2026</div>
+                    <span class="fb-source">📘 Source : Facebook</span>
+                </div>
+                <div class="testi-card animate-scale delay-3">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>“ Excellente prise en charge. J'ai eu un implant dentaire et tout s'est très bien passé. Le docteur est très gentil, à l'écoute et très compétent. Un grand merci à toute l'équipe. ”</blockquote>
+                    <div class="author">— Jean-Pierre N.</div>
+                    <div class="date">19 Mai 2026</div>
+                    <span class="fb-source">📘 Source : Facebook</span>
+                </div>
             </div>
         </div>
     </section>
@@ -1890,7 +1954,7 @@
                     </button>
                 </div>
             </div>
-            <p class="section-sub animate-fade-up delay-2">Restez informés des dernières nouvelles du cabinet.</p>
+            <p class="section-sub animate-fade-up delay-2">Restez informés des dernières nouvelles du cabinet sur les 30 derniers jours.</p>
             <div class="blog-grid" id="newsGrid">
                 <!-- Les actualités seront générées dynamiquement par JavaScript -->
             </div>
@@ -1941,7 +2005,7 @@
             <h2 class="section-title animate-fade-up">Questions fréquentes</h2>
             <p class="section-sub animate-fade-up delay-2">Tout ce que vous voulez savoir avant votre visite.</p>
             <div class="faq-list">
-                <div class="faq-item active animate-scale delay-1"><button class="faq-question">Combien coûte une consultation ? <span class="arrow">▼</span></button><div class="faq-answer">La consultation de base est à 3000 FCFA (prise en charge par la Sécurité Sociale et les mutuelles). Un devis détaillé vous est remis avant tout acte.</div></div>
+                <div class="faq-item active animate-scale delay-1"><button class="faq-question">Combien coûte une consultation ? <span class="arrow">▼</span></button><div class="faq-answer">La consultation de base est à 3000 FCFA (prise en charge par la Sécurité Sociale et les mutuelles). La consultation ORL est à 5000 FCFA. Un devis détaillé vous est remis avant tout acte.</div></div>
                 <div class="faq-item animate-scale delay-2"><button class="faq-question">Est-ce que les soins sont douloureux ? <span class="arrow">▼</span></button><div class="faq-answer">Nous utilisons des anesthésiques de dernière génération et des techniques indolores. Nos patients repartent souvent surpris par le confort des soins.</div></div>
                 <div class="faq-item animate-scale delay-3"><button class="faq-question">Que faire en cas d'urgence le week-end ? <span class="arrow">▼</span></button><div class="faq-answer">Nous avons un numéro d'astreinte 24h/24. Appelez le 66-47-88-90, le docteur vous rappellera dans les 30 minutes.</div></div>
                 <div class="faq-item animate-scale delay-4"><button class="faq-question">Proposez-vous des facilités de paiement ? <span class="arrow">▼</span></button><div class="faq-answer">Oui, nous acceptons le paiement en plusieurs fois sans frais (3x ou 4x) pour les soins importants (implants, orthodontie).</div></div>
@@ -1987,7 +2051,7 @@
                         <span class="emoji">✉️</span>
                         <div>
                             <strong>Email</strong><br>
-                            contact@menodji-dental.com
+                            cabinetbuccodentairemenodji@gmail.com
                         </div>
                     </div>
                     <div class="item">
@@ -2096,17 +2160,16 @@
         // 1. GESTION DES ACTUALITÉS DYNAMIQUES
         // ========================================
         
-        // Données des actualités (semaine du 21 au 27 Mai 2026)
+        // Données des actualités (sur 1 mois - au moins 5 actualités)
         const newsData = [
             {
                 id: 1,
                 icon: '👨‍⚕️',
                 title: 'Consultation ORL Spéciale',
                 description: 'Un spécialiste en O.R.L vous reçoit du 21 au 23 Mai 2026 de 15h30 à 18h00',
-                details: 'Maladies de l\'oreille, du nez, de la gorge, sinusite...',
-                startDate: new Date(2026, 4, 21), // 21 Mai 2026
-                endDate: new Date(2026, 4, 23),   // 23 Mai 2026
-                status: 'active', // 'active', 'soon', 'passed'
+                details: 'Maladies de l\'oreille, du nez, de la gorge, sinusite... Tarif : 5000 FCFA',
+                startDate: new Date(2026, 4, 21),
+                endDate: new Date(2026, 4, 23),
                 emoji: '👨‍⚕️'
             },
             {
@@ -2115,9 +2178,8 @@
                 title: 'Campagne de Détartrage Gratuit',
                 description: 'Profitez d\'un détartrage gratuit pour tout nouveau patient',
                 details: 'Offre valable jusqu\'au 31 Mai 2026. Prenez rendez-vous dès maintenant !',
-                startDate: new Date(2026, 4, 24),
+                startDate: new Date(2026, 4, 1),
                 endDate: new Date(2026, 4, 31),
-                status: 'active',
                 emoji: '🪥'
             },
             {
@@ -2125,11 +2187,40 @@
                 icon: '✨',
                 title: 'Nouveau Service : Facettes Céramique',
                 description: 'Nous proposons désormais des facettes dentaires en céramique',
-                details: 'Pour un sourire éclatant et naturel. Offre de lancement -20%',
-                startDate: new Date(2026, 4, 26),
+                details: 'Pour un sourire éclatant et naturel. Offre de lancement -20% jusqu\'au 15 Juin 2026',
+                startDate: new Date(2026, 4, 15),
                 endDate: new Date(2026, 5, 15),
-                status: 'soon',
                 emoji: '😁'
+            },
+            {
+                id: 4,
+                icon: '🏥',
+                title: 'Nouveaux Horaires d\'Urgence',
+                description: 'Nous étendons nos horaires d\'urgence pour mieux vous servir',
+                details: 'Désormais disponible 24h/24 et 7j/7 pour les urgences dentaires. Appelez le 66-47-88-90',
+                startDate: new Date(2026, 4, 10),
+                endDate: new Date(2026, 5, 30),
+                emoji: '🚑'
+            },
+            {
+                id: 5,
+                icon: '👶',
+                title: 'Soins Dentaires pour Enfants',
+                description: 'Un programme spécial pour les enfants avec des soins adaptés',
+                details: 'Détartrage et fluorisation gratuits pour les moins de 12 ans tout le mois de Juin 2026',
+                startDate: new Date(2026, 5, 1),
+                endDate: new Date(2026, 5, 30),
+                emoji: '🧒'
+            },
+            {
+                id: 6,
+                icon: '🩺',
+                title: 'Journée de Sensibilisation',
+                description: 'Sensibilisation à l\'hygiène bucco-dentaire dans les écoles de Moundou',
+                details: 'En partenariat avec le ministère de la Santé. Du 10 au 12 Juin 2026',
+                startDate: new Date(2026, 5, 10),
+                endDate: new Date(2026, 5, 12),
+                emoji: '📚'
             }
         ];
 
@@ -2191,37 +2282,31 @@
             
             grid.innerHTML = '';
             
-            // Filtrer les actualités de la semaine (7 jours)
+            // Filtrer les actualités des 30 derniers jours
             const now = new Date();
-            const oneWeekAgo = new Date(now);
-            oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+            const oneMonthAgo = new Date(now);
+            oneMonthAgo.setDate(oneMonthAgo.getDate() - 30);
             
-            const weekNews = newsData.filter(news => {
+            let monthNews = newsData.filter(news => {
                 const newsDate = new Date(news.startDate);
-                return newsDate >= oneWeekAgo;
+                return newsDate >= oneMonthAgo;
             });
             
-            // Si pas d'actualités dans la semaine, afficher un message
-            if (weekNews.length === 0) {
-                grid.innerHTML = `
-                    <div style="grid-column:1/-1;text-align:center;padding:40px;background:white;border-radius:var(--radius);box-shadow:var(--shadow-md);">
-                        <div style="font-size:4rem;margin-bottom:16px;">📭</div>
-                        <h3 style="color:var(--primary);">Aucune actualité cette semaine</h3>
-                        <p style="color:var(--gray-600);">Revenez bientôt pour découvrir nos nouvelles annonces !</p>
-                        <a href="#contact" style="display:inline-block;margin-top:16px;background:var(--accent);color:white;padding:10px 24px;border-radius:60px;font-weight:600;">Nous contacter</a>
-                    </div>
-                `;
-                return;
+            // Si moins de 5 actualités, prendre les plus récentes
+            if (monthNews.length < 5) {
+                // Prendre les plus récentes parmi toutes les actualités
+                const sorted = [...newsData].sort((a, b) => b.startDate - a.startDate);
+                monthNews = sorted.slice(0, 5);
             }
             
-            weekNews.forEach(news => {
+            monthNews.forEach(news => {
                 const status = getNewsStatus(news.startDate, news.endDate);
                 const statusMsg = getStatusMessage(status);
                 const statusClass = getStatusClass(status);
                 
                 const card = document.createElement('div');
                 card.className = 'blog-card animate-scale';
-                card.style.animationDelay = (weekNews.indexOf(news) * 0.2 + 0.1) + 's';
+                card.style.animationDelay = (monthNews.indexOf(news) * 0.1 + 0.1) + 's';
                 
                 // Message si l'actualité est passée
                 let passedMessage = '';
@@ -2262,7 +2347,7 @@
         // ========================================
         
         function updateOrlAnnounce() {
-            const orlNews = newsData[0]; // La première actualité est l'ORL
+            const orlNews = newsData[0];
             const status = getNewsStatus(orlNews.startDate, orlNews.endDate);
             
             const announce = document.getElementById('orlAnnounce');
@@ -2273,18 +2358,15 @@
             const dateEl = document.getElementById('orlDate');
             const statusEl = document.getElementById('orlStatus');
             
-            // Mettre à jour le contenu
             icon.textContent = orlNews.emoji;
             title.textContent = '📢 ' + orlNews.title + ' !';
             description.innerHTML = orlNews.description.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             details.textContent = orlNews.details;
             dateEl.textContent = `📅 Du ${formatDate(orlNews.startDate)} au ${formatDate(orlNews.endDate)}`;
             
-            // Mettre à jour le statut
             statusEl.textContent = getStatusMessage(status);
             statusEl.className = 'status-badge ' + getStatusClass(status);
             
-            // Mettre à jour l'apparence du bandeau
             announce.className = 'orl-announce';
             if (status === 'passed') {
                 announce.classList.add('passed');
@@ -2366,7 +2448,6 @@
             window.open(shareUrl, '_blank');
         }
 
-        // Rendre les fonctions globales
         window.shareToFacebook = shareToFacebook;
         window.shareToWhatsApp = shareToWhatsApp;
 
@@ -2374,7 +2455,6 @@
         // 5. NAVIGATION & ANIMATIONS
         // ========================================
         
-        // Hamburger
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         if (hamburger) {
@@ -2386,7 +2466,6 @@
             link.addEventListener('click', () => navLinks.classList.remove('open'));
         });
 
-        // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 30) {
@@ -2396,7 +2475,6 @@
             }
         });
 
-        // Back to top
         const backTop = document.getElementById('backTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 600) {
@@ -2411,7 +2489,6 @@
             });
         }
 
-        // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(btn => {
             btn.addEventListener('click', () => {
                 const item = btn.parentElement;
@@ -2423,7 +2500,6 @@
             });
         });
 
-        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -2444,7 +2520,6 @@
             observer.observe(el);
         });
 
-        // Démarrer les animations pour les éléments déjà visibles
         setTimeout(() => {
             document.querySelectorAll('.animate-fade-up, .animate-fade-left, .animate-fade-right, .animate-scale').forEach(el => {
                 const rect = el.getBoundingClientRect();
@@ -2459,23 +2534,17 @@
         // 6. INITIALISATION
         // ========================================
         
-        // Générer les actualités
         renderNews();
-        
-        // Mettre à jour l'annonce ORL
         updateOrlAnnounce();
-        
-        // Générer les posts Facebook
         renderFacebookPosts();
         
-        // Rafraîchir automatiquement toutes les minutes
         setInterval(() => {
             updateOrlAnnounce();
             renderNews();
         }, 60000);
         
         console.log('📅 Actualités dynamiques chargées avec succès !');
-        console.log('📘 Les actualités s\'affichent sur une semaine et changent automatiquement.');
+        console.log('📘 ' + newsData.length + ' actualités disponibles sur 1 mois.');
     </script>
 
 </body>
