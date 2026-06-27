@@ -967,29 +967,34 @@
             box-shadow: var(--shadow-lg);
             border-color: var(--primary);
         }
+        
+        /* ===== AVATAR CORRECTION ===== */
         .team-grid .team-card .avatar {
             width: 140px;
             height: 140px;
-            background: var(--gray-200);
             border-radius: 50%;
             margin: 0 auto 16px;
             overflow: hidden;
             border: 5px solid var(--accent);
             transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+            background: var(--gray-200);
         }
         .team-grid .team-card:hover .avatar {
             border-color: var(--primary);
             transform: scale(1.05) rotate(5deg);
         }
         .team-grid .team-card .avatar img {
-            width: 100%;
+            width: 200%;
             height: 100%;
+            position: relative;
+            left: -35%;
             object-fit: cover;
-            object-position: center;
+            object-position: center center;
+            display: block;
         }
+        
         .team-grid .team-card h3 {
             color: var(--primary);
             font-size: 1.8rem;
@@ -1756,8 +1761,8 @@
                 height: 200px;
             }
             .team-grid .team-card .avatar {
-                width: 100px;
-                height: 100px;
+                width: 120px;
+                height: 120px;
             }
             .team-grid .team-card h3 {
                 font-size: 1.4rem;
@@ -1940,7 +1945,7 @@
             <div class="team-grid">
                 <div class="team-card animate-scale delay-1">
                     <div class="avatar">
-                        <img src="logo1.png" alt="Dr. MASSEDE ISIDORE" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+                        <img src="logo1.png" alt="Dr. MASSEDE ISIDORE">
                     </div>
                     <h3>Dr. MASSEDE ISIDORE</h3>
                     <div class="specialty">Chirurgien-dentiste</div>
@@ -2224,11 +2229,9 @@
             const messageDiv = document.getElementById('formMessage');
             const submitBtn = document.getElementById('submitBtn');
             
-            // Désactiver le bouton pendant l'envoi
             submitBtn.disabled = true;
             submitBtn.textContent = 'Envoi en cours...';
             
-            // Masquer le message précédent
             messageDiv.className = 'form-message';
             messageDiv.textContent = '';
             
@@ -2253,7 +2256,6 @@
                 messageDiv.textContent = '❌ Une erreur est survenue. Veuillez réessayer ou nous contacter directement par téléphone au 66-47-88-90.';
             })
             .finally(() => {
-                // Réactiver le bouton
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Envoyer un message ✉️';
             });
@@ -2263,7 +2265,6 @@
         // 2. GESTION DES ACTUALITÉS DYNAMIQUES
         // ========================================
         
-        // Données des actualités (sur 1 mois - au moins 5 actualités)
         const newsData = [
             {
                 id: 1,
@@ -2327,11 +2328,9 @@
             }
         ];
 
-        // Variable pour suivre les actualités déjà affichées
         let displayedNewsIds = [];
         let lastNewsCount = 0;
 
-        // Fonction pour déterminer le statut d'une actualité
         function getNewsStatus(startDate, endDate) {
             const now = new Date();
             const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -2348,13 +2347,11 @@
             }
         }
 
-        // Fonction pour formater une date en français
         function formatDate(date) {
             const options = { day: 'numeric', month: 'long', year: 'numeric' };
             return date.toLocaleDateString('fr-FR', options);
         }
 
-        // Fonction pour obtenir le message de statut
         function getStatusMessage(status) {
             switch(status) {
                 case 'active':
@@ -2368,7 +2365,6 @@
             }
         }
 
-        // Fonction pour obtenir la classe CSS du statut
         function getStatusClass(status) {
             switch(status) {
                 case 'active':
@@ -2382,35 +2378,29 @@
             }
         }
 
-        // Afficher une notification toast
         function showToast(message) {
             const toast = document.getElementById('toastNotification');
             const toastBody = document.getElementById('toastBody');
             toastBody.textContent = message;
             toast.classList.add('show');
             
-            // Auto-fermeture après 6 secondes
             clearTimeout(window.toastTimeout);
             window.toastTimeout = setTimeout(() => {
                 toast.classList.remove('show');
             }, 6000);
         }
 
-        // Fermer la notification
         function closeToast() {
             const toast = document.getElementById('toastNotification');
             toast.classList.remove('show');
         }
 
-        // Exposer closeToast globalement
         window.closeToast = closeToast;
 
-        // Générer les cartes d'actualités
         function renderNews() {
             const grid = document.getElementById('newsGrid');
             if (!grid) return;
             
-            // Filtrer les actualités des 30 derniers jours
             const now = new Date();
             const oneMonthAgo = new Date(now);
             oneMonthAgo.setDate(oneMonthAgo.getDate() - 30);
@@ -2420,28 +2410,23 @@
                 return newsDate >= oneMonthAgo;
             });
             
-            // Si moins de 5 actualités, prendre les plus récentes
             if (monthNews.length < 5) {
                 const sorted = [...newsData].sort((a, b) => b.startDate - a.startDate);
                 monthNews = sorted.slice(0, 5);
             }
             
-            // Trier par date de début (plus récent en premier)
             monthNews.sort((a, b) => b.startDate - a.startDate);
             
-            // Vérifier si de nouvelles actualités sont apparues
             const currentNewsIds = monthNews.map(n => n.id);
             const newNews = currentNewsIds.filter(id => !displayedNewsIds.includes(id));
             
             if (newNews.length > 0 && displayedNewsIds.length > 0) {
-                // Afficher une notification pour les nouvelles actualités
                 const latestNews = monthNews.find(n => n.id === newNews[0]);
                 if (latestNews) {
                     showToast(`📢 ${latestNews.title} - ${latestNews.description}`);
                 }
             }
             
-            // Mettre à jour la liste des actualités affichées
             displayedNewsIds = currentNewsIds;
             
             grid.innerHTML = '';
@@ -2457,12 +2442,10 @@
                 card.style.animationDelay = (index * 0.1 + 0.1) + 's';
                 card.dataset.newsId = news.id;
                 
-                // Animation d'entrée pour les nouvelles actualités
                 if (isNew && displayedNewsIds.length > 1) {
                     card.style.animation = 'slideInRight 0.6s ease forwards';
                 }
                 
-                // Message si l'actualité est passée
                 let passedMessage = '';
                 if (status === 'passed') {
                     passedMessage = `
@@ -2501,7 +2484,7 @@
         }
 
         // ========================================
-        // 3. GESTION DE L'ANNONCE ORL (BANDEAU)
+        // 3. GESTION DE L'ANNONCE ORL
         // ========================================
         
         function updateOrlAnnounce() {
@@ -2591,10 +2574,9 @@
         }
 
         // ========================================
-        // 5. FONCTIONS DE PARTAGE DIRECT VERS FACEBOOK
+        // 5. FONCTIONS DE PARTAGE
         // ========================================
         
-        // URL de la page Facebook du cabinet
         const FACEBOOK_PAGE_URL = 'https://www.facebook.com/profile.php?id=61589799500666';
         
         function shareToFacebook() {
@@ -2616,7 +2598,6 @@
             window.open(shareUrl, '_blank');
         }
 
-        // Exposer les fonctions globalement pour les appels HTML
         window.shareToFacebook = shareToFacebook;
         window.shareToWhatsApp = shareToWhatsApp;
 
@@ -2707,7 +2688,6 @@
         updateOrlAnnounce();
         renderFacebookPosts();
         
-        // Mettre à jour toutes les minutes
         setInterval(() => {
             updateOrlAnnounce();
             renderNews();
@@ -2720,6 +2700,7 @@
         console.log('🔔 Les nouvelles actualités remplacent automatiquement les anciennes.');
         console.log('📧 Formulaire de contact configuré avec Formspree !');
         console.log('🔗 Endpoint : https://formspree.io/f/mrewkgkw');
+        console.log('✅ Avatar Dr. MASSEDE ISIDORE corrigé - L\'image couvre parfaitement tout l\'espace !');
     </script>
 
 </body>
